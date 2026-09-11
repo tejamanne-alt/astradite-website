@@ -11,9 +11,9 @@ production code) and rebuilt in Next.js per that brief.
 
 - Next.js 16 (App Router) · React 19 · TypeScript
 - CSS Modules + a global token layer — no CSS framework
-- `next/font/google` for Syne, DM Sans and JetBrains Mono
-- No runtime dependencies beyond Next.js itself. Every icon and the logo are
-  inline SVG; there are no images.
+- `next/font/google` for Playfair Display, DM Sans and JetBrains Mono
+- `@vercel/analytics` is the only runtime dependency beyond Next.js itself.
+  Every icon and the logo are inline SVG; there are no images.
 
 Every route prerenders to static HTML. There is no data fetching, no API route,
 no database and no auth — every action is a `mailto:` or an outbound link.

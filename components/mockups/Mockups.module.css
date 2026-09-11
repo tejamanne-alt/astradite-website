@@ -78,7 +78,7 @@
 }
 
 .orderTitle {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: var(--ink);
@@ -169,7 +169,7 @@
 }
 
 .scoreValue {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 800;
   font-size: 44px;
   line-height: 1;

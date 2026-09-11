@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
-import { DM_Sans, JetBrains_Mono, Syne } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import { DM_Sans, JetBrains_Mono, Playfair_Display } from 'next/font/google'
 
 import { siteUrl } from '@/lib/site'
 
 import './globals.css'
 
-const syne = Syne({
+const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['600', '700', '800'],
-  variable: '--font-syne',
+  variable: '--font-display',
   display: 'swap',
 })
 
@@ -70,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${jetBrainsMono.variable}`}
+      className={`${playfair.variable} ${dmSans.variable} ${jetBrainsMono.variable}`}
     >
       <body>
         {/* Without JS the IntersectionObserver never fires, so neutralise the
@@ -79,6 +80,7 @@ export default function RootLayout({
           <style>{'.reveal{opacity:1!important;transform:none!important}'}</style>
         </noscript>
         {children}
+        <Analytics />
       </body>
     </html>
   )

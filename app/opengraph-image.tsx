@@ -9,9 +9,11 @@ export const contentType = 'image/png'
  * modern browser UA — which is what `fetch` sends. If anything here fails the
  * image still renders in the fallback face rather than failing the build.
  */
-async function loadSyne(): Promise<ArrayBuffer | null> {
+async function loadDisplayFont(): Promise<ArrayBuffer | null> {
   try {
-    const css = await fetch('https://fonts.googleapis.com/css2?family=Syne:wght@800').then((res) =>
+    const css = await fetch(
+      'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800',
+    ).then((res) =>
       res.ok ? res.text() : '',
     )
     const url = css.match(/src:\s*url\((https:[^)]+)\)/)?.[1]
@@ -24,7 +26,7 @@ async function loadSyne(): Promise<ArrayBuffer | null> {
 }
 
 export default async function OpengraphImage() {
-  const syne = await loadSyne()
+  const displayFont = await loadDisplayFont()
 
   return new ImageResponse(
     (
@@ -37,14 +39,14 @@ export default async function OpengraphImage() {
           justifyContent: 'space-between',
           background: 'linear-gradient(135deg, #101010 0%, #000000 58%)',
           padding: '84px 88px',
-          fontFamily: 'Syne',
+          fontFamily: 'Playfair Display',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
           <svg width="52" height="52" viewBox="0 0 24 24" fill="#e8e8e8">
             <path d="M12 1.8l2.3 7.6 7.6 2.3-7.6 2.3L12 21.6l-2.3-7.6L2.1 11.7l7.6-2.3z" />
           </svg>
-          <div style={{ fontSize: 40, color: '#ffffff', letterSpacing: '-0.01em' }}>Astradite</div>
+          <div style={{ fontSize: 40, color: '#ffffff', letterSpacing: '0' }}>Astradite</div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -53,7 +55,7 @@ export default async function OpengraphImage() {
               display: 'flex',
               fontSize: 104,
               lineHeight: 1.02,
-              letterSpacing: '-0.035em',
+              letterSpacing: '-0.015em',
               color: '#ffffff',
             }}
           >
@@ -64,7 +66,7 @@ export default async function OpengraphImage() {
               display: 'flex',
               fontSize: 104,
               lineHeight: 1.02,
-              letterSpacing: '-0.035em',
+              letterSpacing: '-0.015em',
               color: '#e8e8e8',
             }}
           >
@@ -92,8 +94,15 @@ export default async function OpengraphImage() {
     ),
     {
       ...size,
-      fonts: syne
-        ? [{ name: 'Syne', data: syne, weight: 800 as const, style: 'normal' as const }]
+      fonts: displayFont
+        ? [
+            {
+              name: 'Playfair Display',
+              data: displayFont,
+              weight: 800 as const,
+              style: 'normal' as const,
+            },
+          ]
         : undefined,
     },
   )
