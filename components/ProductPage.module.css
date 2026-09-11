@@ -49,13 +49,13 @@
 
 .heroTitle {
   margin-top: 18px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 800;
   /* Floor scales below ~445px so the longest product name still fits the
      content box; at 445px and up this is exactly clamp(40px, 4.6vw, 54px). */
   font-size: clamp(min(40px, 9vw), 4.6vw, 54px);
-  line-height: 0.96;
-  letter-spacing: -0.035em;
+  line-height: 1;
+  letter-spacing: -0.015em;
   color: var(--ink);
   text-wrap: balance;
   animation: rise 800ms var(--ease-out) both;
@@ -63,11 +63,11 @@
 
 .heroTagline {
   margin-top: 18px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 600;
   font-size: clamp(19px, 2.4vw, 28px);
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.005em;
   color: var(--accent);
   animation: rise 800ms var(--ease-out) 120ms both;
 }
@@ -141,7 +141,7 @@
 
 .buildCardTitle {
   margin-top: 14px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 19px;
   color: var(--ink);
@@ -205,7 +205,7 @@
 }
 
 .trackTitle {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   color: var(--ink);
 }
@@ -280,7 +280,7 @@
 .nextLink {
   display: block;
   margin-top: 10px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 22px;
   color: var(--ink);

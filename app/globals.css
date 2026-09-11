@@ -232,7 +232,7 @@ svg {
 --------------------------------------------------------------------------- */
 
 .eyebrow {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 11px;
   letter-spacing: 0.1em;
@@ -246,11 +246,11 @@ svg {
 
 .h2 {
   margin-top: 16px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: clamp(28px, 4.2vw, 50px);
   line-height: 1.05;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
@@ -261,7 +261,7 @@ svg {
 
 .cardTitle {
   margin-top: 14px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: var(--ink);

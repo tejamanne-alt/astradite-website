@@ -43,15 +43,16 @@
 }
 
 .heroTitle {
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 800;
-  /* Sized to the full shell measure: at the 76px ceiling "Stellar Intelligence."
-     runs ~1060px of the 1152px content box, so the headline fills the width
-     instead of leaving it. The floor scales below ~467px, where "Intelligence."
-     alone would otherwise be wider than the content box. */
-  font-size: clamp(min(42px, 9vw), 6vw, 76px);
-  line-height: 0.96;
-  letter-spacing: -0.035em;
+  /* Playfair is far narrower than the Syne it replaced, so the whole headline
+     now sets on one line and needs a larger size to fill the measure: at 84px
+     it runs ~1074px of the 1152px content box (93%). Past ~86px it wraps and
+     fill drops back to ~70%, so the ceiling sits just under that. The floor
+     scales below ~422px, where the headline has to wrap anyway. */
+  font-size: clamp(min(38px, 9vw), 6.4vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.015em;
   color: var(--ink);
   margin-top: 18px;
   text-wrap: balance;
@@ -162,10 +163,10 @@
 
 .productName {
   margin-top: 16px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 800;
   font-size: clamp(26px, 3.4vw, 40px);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   line-height: 1.05;
 }
 
@@ -238,7 +239,7 @@
 
 .processTitle {
   margin-top: 12px;
-  font-family: var(--font-syne), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 18px;
   color: var(--ink);
