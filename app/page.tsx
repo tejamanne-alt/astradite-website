@@ -6,7 +6,6 @@ import SiteFooter from '@/components/SiteFooter'
 import SiteHeader from '@/components/SiteHeader'
 import Starfield from '@/components/Starfield'
 import StatStrip from '@/components/StatStrip'
-import { StarMarkLarge } from '@/components/StarMark'
 import { ArrowRight } from '@/components/icons'
 import { CONTACT_EMAIL, CONTACT_MAILTO, products } from '@/lib/products'
 
@@ -66,12 +65,6 @@ const stats = [
 
 const team = ['Akshanth V', 'Chandrahas Chatta', 'Teja Manne']
 
-const orbitPaths = [
-  { path: styles.pathA, anchor: styles.anchorA, counter: styles.counterA },
-  { path: styles.pathB, anchor: styles.anchorB, counter: styles.counterB },
-  { path: styles.pathC, anchor: styles.anchorC, counter: styles.counterC },
-]
-
 export default function Home() {
   return (
     <>
@@ -94,7 +87,7 @@ export default function Home() {
           <div className={styles.glowFar} aria-hidden="true" />
 
           <div className={`shell ${styles.heroInner}`}>
-            <div>
+            <div className={styles.heroCopy}>
               <div className={`eyebrow ${styles.heroEyebrow}`}>Astradite Private Limited</div>
               <h1 className={styles.heroTitle}>
                 <span className={styles.heroWord}>Stellar</span>{' '}
@@ -115,31 +108,6 @@ export default function Home() {
                 <a href={CONTACT_MAILTO} className="btn btn--secondary btn--mono">
                   {CONTACT_EMAIL}
                 </a>
-              </div>
-            </div>
-
-            <div className={styles.orbitWrap}>
-              <div className={styles.orbit}>
-                <div className={`${styles.ring} ${styles.ringOuter}`} aria-hidden="true" />
-                <div className={`${styles.ring} ${styles.ringMid}`} aria-hidden="true" />
-                <div className={`${styles.ring} ${styles.ringInner}`} aria-hidden="true" />
-                <div className={styles.core} aria-hidden="true" />
-                <div className={styles.mark}>
-                  <StarMarkLarge size={116} />
-                </div>
-
-                {products.map((product, i) => (
-                  <div key={product.slug} className={`${styles.path} ${orbitPaths[i].path}`}>
-                    <div className={`${styles.anchor} ${orbitPaths[i].anchor}`}>
-                      <div className={`${styles.counter} ${orbitPaths[i].counter}`}>
-                        <Link href={product.href} className={styles.chip}>
-                          <span className={`mono ${styles.chipStatus}`}>{product.chipStatus}</span>
-                          <span className={styles.chipName}>{product.name}</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

@@ -83,11 +83,14 @@ component.
   class on first intersection instead — same 700ms `cubic-bezier(0.16, 1, 0.3, 1)`
   and 0/80/160/240ms stagger.
 
-The orbit is pure CSS: a rotating wrapper with a counter-rotating child at the
-same duration and delay, so each chip stays upright as it travels.
-
 Under `prefers-reduced-motion: reduce` the starfield drift and shooting stars
-stop, the orbit holds still, and entrance transforms resolve immediately.
+stop, and entrance transforms resolve immediately.
+
+The design reference pairs the hero copy with an orbit diagram — concentric
+rings, a centre star and three rotating product chips. That has been removed;
+the hero is a single copy column, and the starfield and its two radial glows
+carry the space beside it. `.heroCopy` caps the measure so the headline still
+breaks over three lines.
 
 ## Accessibility
 
@@ -106,5 +109,7 @@ Carried over from the handoff, unchanged:
 - No privacy policy, terms or cookie handling exists yet.
 - `NEXT_PUBLIC_SITE_URL` sets the canonical origin for metadata, the sitemap and
   `robots.txt` (see `lib/site.ts`). Unset, it falls back to the deployment's own
-  production URL on Vercel, then to `https://astradite.com`. Set it once a
-  custom domain is attached.
+  production URL on Vercel, then to `https://astradite.com`. In production that
+  fallback resolves to `https://www.astradite.com`, which is the canonical host
+  (the apex 308-redirects to it), so no env var is needed today. Set it if the
+  apex ever becomes canonical instead.

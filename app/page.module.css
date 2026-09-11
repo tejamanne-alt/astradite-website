@@ -36,10 +36,12 @@
   position: relative;
   padding-top: clamp(64px, 11vh, 132px);
   padding-bottom: clamp(56px, 9vh, 104px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
-  gap: clamp(40px, 6vw, 72px);
-  align-items: center;
+}
+
+/* A measure, not a layout: keeps the headline breaking over three lines and the
+   lede near its 54ch rhythm instead of running the full 1200px shell. */
+.heroCopy {
+  max-width: 600px;
 }
 
 .heroEyebrow {
@@ -94,149 +96,6 @@
   gap: 12px;
   flex-wrap: wrap;
   animation: rise 900ms var(--ease-out) 640ms both;
-}
-
-/* ---------------------------------------------------------------------------
-   Orbit
---------------------------------------------------------------------------- */
-
-.orbitWrap {
-  display: flex;
-  justify-content: center;
-  animation: fadeIn 1400ms ease 300ms both;
-}
-
-.orbit {
-  position: relative;
-  width: 100%;
-  max-width: 460px;
-  aspect-ratio: 1;
-}
-
-.ring {
-  position: absolute;
-  border-radius: 50%;
-}
-
-.ringOuter {
-  inset: 0;
-  border: 1px solid rgba(232, 232, 232, 0.16);
-}
-
-.ringMid {
-  inset: 15%;
-  border: 1px solid rgba(232, 232, 232, 0.13);
-}
-
-.ringInner {
-  inset: 29%;
-  border: 1px solid rgba(232, 232, 232, 0.1);
-}
-
-.core {
-  position: absolute;
-  inset: 37%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(232, 232, 232, 0.2), rgba(232, 232, 232, 0) 70%);
-  animation: breathe 6s ease-in-out infinite;
-}
-
-.mark {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* A rotating wrapper carries the chip around; the child counter-rotates at the
-   same duration and delay so the chip itself stays upright. */
-.path {
-  position: absolute;
-  animation: spin linear infinite;
-}
-
-.pathA {
-  inset: 0;
-  animation-duration: 46s;
-}
-
-.pathB {
-  inset: 15%;
-  animation-duration: 62s;
-  animation-delay: -22s;
-}
-
-.pathC {
-  inset: 17%;
-  animation-duration: 84s;
-  animation-delay: -52s;
-}
-
-.anchor {
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
-
-.anchorA {
-  top: 0;
-  left: 50%;
-}
-
-.anchorB {
-  top: 50%;
-  left: 100%;
-}
-
-.anchorC {
-  top: 100%;
-  left: 34%;
-}
-
-.counter {
-  animation: spinBack linear infinite;
-}
-
-.counterA {
-  animation-duration: 46s;
-}
-
-.counterB {
-  animation-duration: 62s;
-  animation-delay: -22s;
-}
-
-.counterC {
-  animation-duration: 84s;
-  animation-delay: -52s;
-}
-
-.chip {
-  display: block;
-  background: var(--surface-2);
-  border-radius: 12px;
-  padding: 10px 14px;
-  white-space: nowrap;
-  transition: transform 200ms ease;
-}
-
-.chip:hover {
-  transform: translateY(-2px);
-}
-
-.chipStatus {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--dim);
-}
-
-.chipName {
-  display: block;
-  font-family: var(--font-syne), sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--ink);
 }
 
 /* ---------------------------------------------------------------------------
