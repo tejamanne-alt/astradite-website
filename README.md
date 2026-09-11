@@ -65,10 +65,16 @@ scale is `clamp()`, so the site reflows from 320px to 2560px on its own. Grid
 minimums are wrapped in `min(…, 100%)` so a track can never be wider than its
 container.
 
-Two clamp floors scale below ~467px (home H1) and ~445px (product H1) — at the
+Two clamp floors scale below ~467px (home H1) and ~445px (product H1) — at a
 fixed floor, `Intelligence.` and `DineOnTap` are individually wider than the
-content box at 375px. Above those widths both resolve to the design's original
-`clamp(42px, 4.8vw, 58px)` and `clamp(40px, 4.6vw, 54px)`.
+content box at 375px. The product H1 resolves to the design's original
+`clamp(40px, 4.6vw, 54px)` above that width.
+
+The home H1 runs `clamp(min(42px, 9vw), 6vw, 76px)`. The design's 58px ceiling
+was tuned for the ~540px column beside the old hero art; with the hero spanning
+the full 1152px shell, 76px puts "Stellar Intelligence." at ~1060px of the
+measure so the headline fills the width rather than stranding it. It breaks over
+two lines from ~700px up, three below.
 
 ## Motion
 
@@ -88,9 +94,8 @@ stop, and entrance transforms resolve immediately.
 
 The design reference pairs the hero copy with an orbit diagram — concentric
 rings, a centre star and three rotating product chips. That has been removed;
-the hero is a single copy column, and the starfield and its two radial glows
-carry the space beside it. `.heroCopy` caps the measure so the headline still
-breaks over three lines.
+the hero is a single copy column spanning the full shell, with the starfield and
+its two radial glows behind it.
 
 ## Accessibility
 
