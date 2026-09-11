@@ -1,0 +1,304 @@
+.panel {
+  width: 100%;
+  background: var(--surface-2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* A live indicator: a solid dot with a ring pinging out of it. */
+.ping {
+  position: relative;
+  display: inline-flex;
+  width: 6px;
+  height: 6px;
+}
+
+.pingRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pingDot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.chip {
+  background: rgba(232, 232, 232, 0.14);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 5px 11px;
+  font-size: 12px;
+}
+
+/* --- DineOnTap ------------------------------------------------------------ */
+
+.phone {
+  max-width: 320px;
+  border-radius: 22px;
+  padding: 14px;
+}
+
+.phoneTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 12px;
+}
+
+.openTab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--accent);
+}
+
+.orderCard {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.orderTitle {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.orderLines {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.orderLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.orderItem {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.orderPrice {
+  font-size: 13px;
+  color: var(--body);
+}
+
+.orderTotal {
+  padding-top: 12px;
+  border-top: 1px solid rgba(232, 232, 232, 0.14);
+}
+
+.orderTotalLabel {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.orderTotalValue {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.sendButton {
+  margin-top: 16px;
+  background: var(--accent);
+  color: var(--bg);
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.guestCard {
+  margin-top: 12px;
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.guestLabel {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+.guestNote {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* --- Wellness Axis -------------------------------------------------------- */
+
+.axisCard {
+  max-width: 340px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.score {
+  margin-top: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.scoreValue {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.scoreNote {
+  font-size: 13px;
+  color: var(--body);
+}
+
+.bars {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.barHead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.barValue {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  color: var(--ink);
+}
+
+.barValue--negative {
+  color: var(--recessive);
+}
+
+.barTrack {
+  margin-top: 6px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(28, 28, 28, 0.9);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  animation: grow 1100ms var(--ease-out) var(--bar-delay, 0ms) both;
+}
+
+.barFill--negative {
+  background: var(--recessive);
+}
+
+.conditions {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(232, 232, 232, 0.14);
+}
+
+.conditionsLabel {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+.conditionsChips {
+  margin-top: 10px;
+}
+
+/* --- Medico Nexus --------------------------------------------------------- */
+
+.caseCard {
+  max-width: 360px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.caseTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.caseText {
+  margin-top: 14px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.caseChips {
+  margin-top: 14px;
+}
+
+.replies {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(232, 232, 232, 0.14);
+  display: grid;
+  gap: 14px;
+}
+
+.reply {
+  display: flex;
+  gap: 12px;
+}
+
+.avatar {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(232, 232, 232, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.credential {
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.replyText {
+  margin-top: 3px;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.55;
+}

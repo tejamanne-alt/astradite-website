@@ -1,0 +1,92 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.nav {
+  padding-block: 14px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nav--product {
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  margin-right: auto;
+}
+
+.wordmark {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.wordmark--product {
+  font-size: 16px;
+}
+
+.productName {
+  color: var(--dim);
+  font-size: 14px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: var(--body);
+  font-size: 14px;
+  transition: color 200ms ease;
+}
+
+.link:hover {
+  color: var(--accent-bright);
+}
+
+.cta {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.cta--primary {
+  background: var(--accent);
+  color: var(--bg);
+  transition: opacity 200ms ease;
+}
+
+.cta--primary:hover {
+  opacity: 0.9;
+  color: var(--bg);
+}
+
+.cta--secondary {
+  background: rgba(28, 28, 28, 0.55);
+  color: var(--ink);
+  transition: background 200ms ease;
+}
+
+.cta--secondary:hover {
+  background: rgba(28, 28, 28, 0.9);
+  color: var(--ink);
+}

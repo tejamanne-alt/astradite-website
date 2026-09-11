@@ -1,0 +1,85 @@
+import Link from 'next/link'
+
+import { StarMark } from './StarMark'
+import styles from './SiteHeader.module.css'
+
+type NavLink = { label: string; href: string }
+
+type SiteHeaderProps = {
+  /** Appended after the wordmark on product pages, e.g. "/ DineOnTap". */
+  product?: string
+  /** Where the wordmark points. */
+  homeHref?: string
+  links?: NavLink[]
+  cta: {
+    label: string
+    href: string
+    external?: boolean
+    variant?: 'primary' | 'secondary'
+  }
+}
+
+export default function SiteHeader({
+  product,
+  homeHref = '/',
+  links = [],
+  cta,
+}: SiteHeaderProps) {
+  const isProduct = Boolean(product)
+  const ctaVariant = cta.variant ?? 'primary'
+
+  return (
+    <header className={styles.header}>
+      <nav
+        className={`shell${isProduct ? ' shell--narrow' : ''} ${styles.nav}${
+          isProduct ? ` ${styles['nav--product']}` : ''
+        }`}
+      >
+        <Link href={homeHref} className={`hit ${styles.brand}`}>
+          <StarMark size={isProduct ? 18 : 20} />
+          <span
+            className={`${styles.wordmark}${
+              isProduct ? ` ${styles['wordmark--product']}` : ''
+            }`}
+          >
+            Astradite
+          </span>
+          {product ? <span className={styles.productName}>/ {product}</span> : null}
+        </Link>
+
+        {isProduct ? (
+          links.map((link) => (
+            <Link key={link.href} href={link.href} className={`hit ${styles.link}`}>
+              {link.label}
+            </Link>
+          ))
+        ) : (
+          <div className={styles.links}>
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} className={`hit ${styles.link}`}>
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={cta.href}
+              className={`hit ${styles.cta} ${styles[`cta--${ctaVariant}`]}`}
+              {...(cta.external ? { target: '_blank', rel: 'noopener' } : {})}
+            >
+              {cta.label}
+            </a>
+          </div>
+        )}
+
+        {isProduct ? (
+          <a
+            href={cta.href}
+            className={`hit ${styles.cta} ${styles[`cta--${ctaVariant}`]}`}
+            {...(cta.external ? { target: '_blank', rel: 'noopener' } : {})}
+          >
+            {cta.label}
+          </a>
+        ) : null}
+      </nav>
+    </header>
+  )
+}
