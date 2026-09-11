@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #000000; color: #ffffff; font-family: "DM Sans", system-ui, sans-serif; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  a { color: #e8e8e8; text-decoration: none; }
+  a:hover { color: #ffffff; }
+  ::selection { background: rgba(232,232,232,0.3); color: #ffffff; }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes wordRise { from { opacity: 0; transform: translateY(0.4em) rotate(1.5deg); } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes spinBack { to { transform: rotate(-360deg); } }
+  @keyframes breathe { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.06); } }
+  @keyframes glowPulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.7; } }
+</style>
+</helmet>
+
+<div style="position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; background: rgba(232,232,232,0.08)">
+  <div ref="{{ progressRef }}" style="height: 100%; width: 0%; background: #e8e8e8; box-shadow: 0 0 14px rgba(232,232,232,0.45)"></div>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(8,8,8,0.86); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(232,232,232,0.12)">
+  <nav style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap">
+    <a href="#top" style="display: flex; align-items: center; gap: 10px; color: #ffffff; margin-right: auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#e8e8e8" aria-hidden="true"><path d="M12 1.8l2.3 7.6 7.6 2.3-7.6 2.3L12 21.6l-2.3-7.6L2.1 11.7l7.6-2.3z" /></svg>
+      <span style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; letter-spacing: -0.01em">Astradite</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap">
+      <a href="#capabilities" style="color: #a3a3a3; font-size: 14px" style-hover="color: #ffffff">What we do</a>
+      <a href="#products" style="color: #a3a3a3; font-size: 14px" style-hover="color: #ffffff">Products</a>
+      <a href="#process" style="color: #a3a3a3; font-size: 14px" style-hover="color: #ffffff">How we work</a>
+      <a href="mailto:contact@astradite.com" style="background: #e8e8e8; color: #000000; font-weight: 600; font-size: 14px; padding: 9px 16px; border-radius: 10px; transition: opacity 200ms ease" style-hover="opacity: 0.9; color: #000000">Get in touch</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top" style="position: relative">
+  <section style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(232,232,232,0.12)">
+    <canvas ref="{{ starRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none"></canvas>
+    <div style="position: absolute; top: -24%; left: 46%; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(232,232,232,0.10), rgba(232,232,232,0) 62%); pointer-events: none; animation: glowPulse 14s ease-in-out infinite"></div>
+    <div style="position: absolute; top: -34%; right: -10%; width: 820px; height: 820px; border-radius: 50%; background: radial-gradient(circle, rgba(232,232,232,0.05), rgba(232,232,232,0) 58%); pointer-events: none"></div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(64px, 11vh, 132px) 24px clamp(56px, 9vh, 104px); display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: clamp(40px, 6vw, 72px); align-items: center">
+      <div>
+        <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #e8e8e8; animation: fadeIn 900ms ease both">Astradite Private Limited</div>
+        <h1 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(42px, 4.8vw, 58px); line-height: 0.96; letter-spacing: -0.035em; color: #ffffff; margin-top: 18px; text-wrap: balance">
+          <span style="display: inline-block; animation: wordRise 900ms cubic-bezier(0.16,1,0.3,1) 120ms both">Stellar</span>
+          <span style="display: inline-block; animation: wordRise 900ms cubic-bezier(0.16,1,0.3,1) 240ms both">Intelligence.</span>
+          <span style="display: inline-block; color: #e8e8e8; animation: wordRise 900ms cubic-bezier(0.16,1,0.3,1) 380ms both">Applied.</span>
+        </h1>
+        <p style="margin-top: 26px; max-width: 54ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; color: #a3a3a3; text-wrap: pretty; animation: rise 900ms cubic-bezier(0.16,1,0.3,1) 520ms both">
+          Astradite is where profound intelligence meets limitless imagination. Rooted in deep technical mastery, we architect high-velocity software that spans from the highly practical to the deeply immersive — engineering solutions for complex, real-world problems.
+        </p>
+        <div style="margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; animation: rise 900ms cubic-bezier(0.16,1,0.3,1) 640ms both">
+          <a href="#products" style="display: inline-flex; align-items: center; gap: 8px; background: #e8e8e8; color: #000000; font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 10px; min-height: 44px; transition: opacity 200ms ease" style-hover="opacity: 0.9; color: #000000">Explore the products
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+          </a>
+          <a href="mailto:contact@astradite.com" style="display: inline-flex; align-items: center; font-family: 'JetBrains Mono', monospace; color: #ffffff; font-size: 14px; padding: 13px 22px; border-radius: 10px; min-height: 44px; background: rgba(28,28,28,0.4); transition: background 200ms ease" style-hover="background: rgba(28,28,28,0.75); color: #ffffff">contact@astradite.com</a>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; animation: fadeIn 1400ms ease 300ms both">
+        <div style="position: relative; width: 100%; max-width: 460px; aspect-ratio: 1">
+          <div style="position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(232,232,232,0.16)"></div>
+          <div style="position: absolute; inset: 15%; border-radius: 50%; border: 1px solid rgba(232,232,232,0.13)"></div>
+          <div style="position: absolute; inset: 29%; border-radius: 50%; border: 1px solid rgba(232,232,232,0.10)"></div>
+          <div style="position: absolute; inset: 37%; border-radius: 50%; background: radial-gradient(circle, rgba(232,232,232,0.20), rgba(232,232,232,0) 70%); animation: breathe 6s ease-in-out infinite"></div>
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center">
+            <svg width="116" height="116" viewBox="0 0 100 100" aria-label="Astradite">
+              <path d="M50 3 Q56 44 92 50 Q56 56 50 97 Q44 56 8 50 Q44 44 50 3 Z" fill="#e8e8e8" />
+            </svg>
+          </div>
+
+          <div ref="{{ orbitA }}" style="position: absolute; inset: 0; animation: spin 46s linear infinite">
+            <div style="position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%)">
+              <div style="animation: spinBack 46s linear infinite">
+                <a href="DineOnTap.dc.html" style="display: block; background: #151515; border-radius: 12px; padding: 10px 14px; white-space: nowrap; transition: transform 200ms ease" style-hover="transform: translateY(-2px)">
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #7a7a7a">01 · LIVE</div>
+                  <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #ffffff">DineOnTap</div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div ref="{{ orbitB }}" style="position: absolute; inset: 15%; animation: spin 62s linear infinite; animation-delay: -22s">
+            <div style="position: absolute; top: 50%; left: 100%; transform: translate(-50%, -50%)">
+              <div style="animation: spinBack 62s linear infinite; animation-delay: -22s">
+                <a href="WellnessAxis.dc.html" style="display: block; background: #151515; border-radius: 12px; padding: 10px 14px; white-space: nowrap; transition: transform 200ms ease" style-hover="transform: translateY(-2px)">
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #7a7a7a">02 · LIVE</div>
+                  <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #ffffff">Wellness Axis</div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div ref="{{ orbitC }}" style="position: absolute; inset: 17%; animation: spin 84s linear infinite; animation-delay: -52s">
+            <div style="position: absolute; top: 100%; left: 34%; transform: translate(-50%, -50%)">
+              <div style="animation: spinBack 84s linear infinite; animation-delay: -52s">
+                <a href="MedicoNexus.dc.html" style="display: block; background: #151515; border-radius: 12px; padding: 10px 14px; white-space: nowrap; transition: transform 200ms ease" style-hover="transform: translateY(-2px)">
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #7a7a7a">03 · BUILDING</div>
+                  <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #ffffff">Medico Nexus</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom: 1px solid rgba(232,232,232,0.12)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))">
+      <div style="padding: 22px 0">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7a7a7a">PRODUCTS</div>
+        <div style="margin-top: 6px; font-size: 15px; color: #ffffff">Two live, one in progress</div>
+      </div>
+      <div style="padding: 22px 0">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7a7a7a">DOMAINS</div>
+        <div style="margin-top: 6px; font-size: 15px; color: #ffffff">Hospitality, health, clinical networks</div>
+      </div>
+      <div style="padding: 22px 0">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7a7a7a">BASED IN</div>
+        <div style="margin-top: 6px; font-size: 15px; color: #ffffff">Kurnool, Andhra Pradesh, India</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities" style="border-bottom: 1px solid rgba(232,232,232,0.12)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 24px">
+      <div style="animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 5% cover 22%">
+        <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #e8e8e8">What we do</div>
+        <h2 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(28px, 4.2vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #ffffff; max-width: 22ch">We build the whole product, not a piece of it.</h2>
+      </div>
+      <div style="margin-top: clamp(36px, 5vw, 60px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(232,232,232,0.12)">
+        <div style="background: #000000; padding: 28px 26px; animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e8e8e8">01</div>
+          <h3 style="margin-top: 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff">Product engineering</h3>
+          <p style="margin-top: 10px; color: #a3a3a3; text-wrap: pretty">From first principle to shipped surface — architecture, data model, interface, deploy pipeline. One team carries it end to end.</p>
+        </div>
+        <div style="background: #000000; padding: 28px 26px; animation: rise 700ms ease 80ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e8e8e8">02</div>
+          <h3 style="margin-top: 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff">Applied intelligence</h3>
+          <p style="margin-top: 10px; color: #a3a3a3; text-wrap: pretty">Knowledge graphs, inference and recommendation layers that turn raw signal into a read someone can actually act on.</p>
+        </div>
+        <div style="background: #000000; padding: 28px 26px; animation: rise 700ms ease 160ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e8e8e8">03</div>
+          <h3 style="margin-top: 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff">Immersive systems</h3>
+          <p style="margin-top: 10px; color: #a3a3a3; text-wrap: pretty">Real-time, spatial and simulation-grade work for the problems where a flat screen stops being enough.</p>
+        </div>
+        <div style="background: #000000; padding: 28px 26px; animation: rise 700ms ease 240ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e8e8e8">04</div>
+          <h3 style="margin-top: 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff">High-velocity delivery</h3>
+          <p style="margin-top: 10px; color: #a3a3a3; text-wrap: pretty">Small teams, short loops, production from the first week. Velocity is an engineering property, not a promise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" style="border-bottom: 1px solid rgba(232,232,232,0.12)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 24px">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 5% cover 22%">
+        <div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #e8e8e8">Products</div>
+          <h2 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(28px, 4.2vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #ffffff">Three things in orbit.</h2>
+        </div>
+        <p style="max-width: 38ch; color: #a3a3a3; text-wrap: pretty">Everything we ship is our own product first. Each one leaves behind infrastructure the next one starts from.</p>
+      </div>
+
+      <div style="margin-top: clamp(36px, 5vw, 56px)">
+        <article style="border-top: 1px solid rgba(232,232,232,0.12); padding: clamp(28px, 4vw, 44px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px, 4vw, 56px); animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 2% cover 22%">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #7a7a7a">01</span>
+              <sc-if value="{{ showStatus }}" hint-placeholder-val="{{ true }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #000000; background: #e8e8e8; padding: 4px 10px; border-radius: 9999px">LIVE</span></sc-if>
+            </div>
+            <h3 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05"><a href="DineOnTap.dc.html" style="color: #ffffff" style-hover="color: #e8e8e8">DineOnTap</a></h3>
+            <p style="margin-top: 12px; font-size: clamp(16px, 1.5vw, 19px); color: #ffffff">Scan. Order. Know your customers.</p>
+          </div>
+          <div>
+            <p style="color: #a3a3a3; text-wrap: pretty">A table orders, eats and leaves — and most restaurants learn nothing from it. DineOnTap turns a QR code on the table into a live menu, a kitchen ticket, and a picture of who keeps coming back.</p>
+            <div style="margin-top: 22px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+              <a href="DineOnTap.dc.html" style="display: inline-flex; align-items: center; gap: 7px; font-weight: 600">Read the case study
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+              </a>
+              <a href="https://dineontap.com" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #a3a3a3" style-hover="color: #ffffff">dineontap.com ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article style="border-top: 1px solid rgba(232,232,232,0.12); padding: clamp(28px, 4vw, 44px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px, 4vw, 56px); animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 2% cover 22%">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #7a7a7a">02</span>
+              <sc-if value="{{ showStatus }}" hint-placeholder-val="{{ true }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #000000; background: #e8e8e8; padding: 4px 10px; border-radius: 9999px">LIVE</span></sc-if>
+            </div>
+            <h3 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05"><a href="WellnessAxis.dc.html" style="color: #ffffff" style-hover="color: #e8e8e8">Wellness Axis</a></h3>
+            <p style="margin-top: 12px; font-size: clamp(16px, 1.5vw, 19px); color: #ffffff">Health conditions, decoded across food, activity and sleep.</p>
+          </div>
+          <div>
+            <p style="color: #a3a3a3; text-wrap: pretty">You can log everything and still not know what any of it did. Wellness Axis runs your food, activity and sleep through a knowledge graph and projects a signed impact score against the conditions you actually live with.</p>
+            <div style="margin-top: 22px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+              <a href="WellnessAxis.dc.html" style="display: inline-flex; align-items: center; gap: 7px; font-weight: 600">Read the case study
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+              </a>
+              <a href="https://wellnessaxis.app" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #a3a3a3" style-hover="color: #ffffff">wellnessaxis.app ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article style="border-top: 1px solid rgba(232,232,232,0.12); border-bottom: 1px solid rgba(232,232,232,0.12); padding: clamp(28px, 4vw, 44px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px, 4vw, 56px); animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 2% cover 22%">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #7a7a7a">03</span>
+              <sc-if value="{{ showStatus }}" hint-placeholder-val="{{ true }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #b0b0b0; background: rgba(176,176,176,0.14); padding: 4px 10px; border-radius: 9999px">IN PROGRESS</span></sc-if>
+            </div>
+            <h3 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05"><a href="MedicoNexus.dc.html" style="color: #ffffff" style-hover="color: #e8e8e8">Medico Nexus</a></h3>
+            <p style="margin-top: 12px; font-size: clamp(16px, 1.5vw, 19px); color: #ffffff">Every case, a colleague away.</p>
+          </div>
+          <div>
+            <p style="color: #a3a3a3; text-wrap: pretty">Medicine is a collective discipline, practiced alone. Medico Nexus is a network where a clinician can pose a de-identified case and reach the peers who have already seen it. In progress.</p>
+            <div style="margin-top: 22px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+              <a href="MedicoNexus.dc.html" style="display: inline-flex; align-items: center; gap: 7px; font-weight: 600">Read what we're building
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="border-bottom: 1px solid rgba(232,232,232,0.12)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 24px">
+      <div style="animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 5% cover 22%">
+        <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #e8e8e8">How we work</div>
+        <h2 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(28px, 4.2vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #ffffff; max-width: 24ch">Four moves, repeated until it holds.</h2>
+      </div>
+      <ol style="margin: clamp(36px, 5vw, 56px) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: rgba(232,232,232,0.12)">
+        <li style="background: #000000; padding: 26px 24px; animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #8a8a8a">01</div>
+          <h3 style="margin-top: 12px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: #ffffff">Observe</h3>
+          <p style="margin-top: 8px; color: #a3a3a3; text-wrap: pretty">We start inside the problem, not the pitch — the constraints, the users, the systems already in the room.</p>
+        </li>
+        <li style="background: #000000; padding: 26px 24px; animation: rise 700ms ease 80ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #8a8a8a">02</div>
+          <h3 style="margin-top: 12px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: #ffffff">Architect</h3>
+          <p style="margin-top: 8px; color: #a3a3a3; text-wrap: pretty">A model of the domain before a line of product code. Data first, interface second, never the reverse.</p>
+        </li>
+        <li style="background: #000000; padding: 26px 24px; animation: rise 700ms ease 160ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #8a8a8a">03</div>
+          <h3 style="margin-top: 12px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: #ffffff">Ship</h3>
+          <p style="margin-top: 8px; color: #a3a3a3; text-wrap: pretty">Something real in front of real users early, then tightened in short loops against how they actually use it.</p>
+        </li>
+        <li style="background: #000000; padding: 26px 24px; animation: rise 700ms ease 240ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #8a8a8a">04</div>
+          <h3 style="margin-top: 12px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: #ffffff">Compound</h3>
+          <p style="margin-top: 8px; color: #a3a3a3; text-wrap: pretty">What one product proves, the next one inherits. Nothing is rebuilt twice.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 24px clamp(48px, 7vw, 84px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 64px)">
+      <div style="animation: rise 700ms ease both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+        <div style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #e8e8e8">Contact</div>
+        <h2 style="margin-top: 16px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(28px, 4.2vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #ffffff; max-width: 20ch">Tell us what you're building.</h2>
+        <a href="mailto:contact@astradite.com" style="display: inline-block; margin-top: 26px; font-family: 'JetBrains Mono', monospace; font-size: clamp(17px, 2.2vw, 26px); border-bottom: 1px solid rgba(232,232,232,0.4); padding-bottom: 4px">contact@astradite.com</a>
+      </div>
+      <div style="animation: rise 700ms ease 100ms both; animation-timeline: view(); animation-range: entry 5% cover 25%">
+        <div style="padding-top: 18px; border-top: 1px solid rgba(232,232,232,0.12)">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7a7a7a">THE TEAM</div>
+          <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px">
+            <span style="background: rgba(28,28,28,0.5); border-radius: 9999px; padding: 7px 14px; font-size: 14px; color: #ffffff">Akshanth V</span>
+            <span style="background: rgba(28,28,28,0.5); border-radius: 9999px; padding: 7px 14px; font-size: 14px; color: #ffffff">Chandrahas Chatta</span>
+            <span style="background: rgba(28,28,28,0.5); border-radius: 9999px; padding: 7px 14px; font-size: 14px; color: #ffffff">Teja Manne</span>
+          </div>
+        </div>
+        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(232,232,232,0.12)">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7a7a7a">REGISTERED OFFICE</div>
+          <p style="margin-top: 10px; color: #ffffff; line-height: 1.6">1/22, Mamidalapadu<br />Kurnool &mdash; 518004<br />Andhra Pradesh, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="border-top: 1px solid rgba(232,232,232,0.12)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8e8e8" aria-hidden="true"><path d="M12 1.8l2.3 7.6 7.6 2.3-7.6 2.3L12 21.6l-2.3-7.6L2.1 11.7l7.6-2.3z" /></svg>
+      <span style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: #ffffff">Astradite Private Limited</span>
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7a7a7a">Stellar Intelligence. Applied.</div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;motion&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;full&quot;, &quot;subtle&quot;, &quot;off&quot;], &quot;default&quot;: &quot;full&quot;, &quot;tsType&quot;: &quot;'full' | 'subtle' | 'off'&quot;, &quot;section&quot;: &quot;Motion&quot; },
+  &quot;starDensity&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;min&quot;: 0, &quot;max&quot;: 2.5, &quot;step&quot;: 0.1, &quot;default&quot;: 1, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Motion&quot; },
+  &quot;showStatus&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot; }
+}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.progressRef = React.createRef();
+    this.starRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.onScroll = () => {
+      if (this.tick) return;
+      this.tick = requestAnimationFrame(() => {
+        this.tick = 0;
+        const el = this.progressRef.current;
+        if (!el) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        el.style.width = (max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0) + "%";
+      });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll();
+    this.startField();
+  }
+
+  componentDidUpdate() { this.startField(); }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    if (this.tick) cancelAnimationFrame(this.tick);
+    this.stopField();
+  }
+
+  stopField() {
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.ro) this.ro.disconnect();
+    this.raf = 0;
+    this.ro = null;
+  }
+
+  startField() {
+    this.stopField();
+    const c = this.starRef.current;
+    if (!c) return;
+    const motion = this.props.motion ?? "full";
+    const reduced = motion !== "full" || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const still = motion === "off";
+    const density = this.props.starDensity ?? 1;
+    const ctx = c.getContext("2d");
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0, stars = [], shot = null, next = 2600;
+
+    const seed = () => {
+      const r = c.getBoundingClientRect();
+      w = Math.max(1, r.width); h = Math.max(1, r.height);
+      c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = Math.round(((w * h) / 8200) * density);
+      stars = Array.from({ length: n }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        z: Math.random(), p: Math.random() * Math.PI * 2
+      }));
+    };
+    seed();
+    this.ro = new ResizeObserver(seed);
+    this.ro.observe(c);
+
+    let t = 0, last = performance.now();
+    const draw = (now) => {
+      const dt = Math.min(48, now - last);
+      last = now;
+      if (!still) t += dt;
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        const drift = reduced ? 0 : (t / 1000) * (2.5 + s.z * 9);
+        let y = (s.y - drift) % h;
+        if (y < 0) y += h;
+        const tw = still ? 0.75 : 0.55 + 0.45 * Math.sin(t / 900 + s.p);
+        ctx.globalAlpha = Math.max(0, (0.11 + s.z * 0.32) * tw);
+        ctx.fillStyle = s.z > 0.86 ? "#e8e8e8" : "#d4d4d4";
+        ctx.beginPath();
+        ctx.arc(s.x, y, 0.4 + s.z * 1.1, 0, 6.2832);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (!reduced) {
+        next -= dt;
+        if (!shot && next <= 0) {
+          shot = { x: w * (0.15 + Math.random() * 0.7), y: -20, life: 0, len: 70 + Math.random() * 90 };
+          next = 5200 + Math.random() * 6000;
+        }
+        if (shot) {
+          shot.life += dt;
+          const vx = -0.16, vy = 0.34;
+          shot.x += vx * dt; shot.y += vy * dt;
+          const a = Math.max(0, 1 - shot.life / 1500);
+          const g = ctx.createLinearGradient(shot.x, shot.y, shot.x - vx * shot.len * 3, shot.y - vy * shot.len * 3);
+          g.addColorStop(0, "rgba(232,232,232," + (0.75 * a).toFixed(3) + ")");
+          g.addColorStop(1, "rgba(232,232,232,0)");
+          ctx.strokeStyle = g;
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(shot.x, shot.y);
+          ctx.lineTo(shot.x - vx * shot.len * 3, shot.y - vy * shot.len * 3);
+          ctx.stroke();
+          if (shot.y > h + 40 || a <= 0) shot = null;
+        }
+      }
+      this.raf = requestAnimationFrame(draw);
+    };
+    this.raf = requestAnimationFrame(draw);
+  }
+
+  renderVals() {
+    return {
+      progressRef: this.progressRef,
+      starRef: this.starRef,
+      showStatus: this.props.showStatus ?? true
+    };
+  }
+}
+
+</script>
+</body>
+</html>

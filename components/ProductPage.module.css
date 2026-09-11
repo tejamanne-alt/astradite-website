@@ -1,0 +1,297 @@
+/* ---------------------------------------------------------------------------
+   Hero
+--------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.glow {
+  position: absolute;
+  top: -40%;
+  left: 55%;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(232, 232, 232, var(--glow-alpha, 0.1)),
+    rgba(232, 232, 232, 0) 62%
+  );
+  pointer-events: none;
+  animation: glowPulseSoft 14s ease-in-out infinite;
+}
+
+.heroInner {
+  position: relative;
+  padding-top: clamp(52px, 9vh, 100px);
+  padding-bottom: clamp(44px, 7vh, 84px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+  gap: clamp(36px, 6vw, 72px);
+  align-items: center;
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeIn 800ms ease both;
+}
+
+.heroOrdinal {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.heroTitle {
+  margin-top: 18px;
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 800;
+  /* Floor scales below ~445px so the longest product name still fits the
+     content box; at 445px and up this is exactly clamp(40px, 4.6vw, 54px). */
+  font-size: clamp(min(40px, 9vw), 4.6vw, 54px);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  text-wrap: balance;
+  animation: rise 800ms var(--ease-out) both;
+}
+
+.heroTagline {
+  margin-top: 18px;
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 600;
+  font-size: clamp(19px, 2.4vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  animation: rise 800ms var(--ease-out) 120ms both;
+}
+
+.heroBody {
+  margin-top: 20px;
+  max-width: 52ch;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--body);
+  text-wrap: pretty;
+  animation: rise 800ms var(--ease-out) 220ms both;
+}
+
+.heroActions {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: rise 800ms var(--ease-out) 320ms both;
+}
+
+.mockupWrap {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 1200ms ease 300ms both;
+}
+
+/* ---------------------------------------------------------------------------
+   The problem
+--------------------------------------------------------------------------- */
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.splitHead {
+  max-width: 18ch;
+}
+
+.prose {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.prose p {
+  color: var(--body);
+  font-size: clamp(15px, 1.4vw, 17px);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------------
+   What we built
+--------------------------------------------------------------------------- */
+
+.buildHead {
+  max-width: 20ch;
+}
+
+.buildGrid {
+  margin-top: clamp(32px, 5vw, 56px);
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+.buildCard {
+  padding: 28px 26px;
+}
+
+.buildCardTitle {
+  margin-top: 14px;
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Flow / axes / status track
+--------------------------------------------------------------------------- */
+
+.track {
+  margin-top: clamp(32px, 5vw, 52px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--track-min, 210px), 100%), 1fr));
+  gap: 22px;
+}
+
+.rule {
+  height: 2px;
+}
+
+.rule--gradient {
+  background: linear-gradient(90deg, #e8e8e8, rgba(232, 232, 232, 0.1));
+}
+
+.rule--solid {
+  background: var(--accent);
+}
+
+.rule--muted {
+  background: var(--pending);
+}
+
+.rule--faint {
+  background: rgba(232, 232, 232, 0.2);
+}
+
+.trackLabel {
+  margin-top: 14px;
+}
+
+.trackLabel--step {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.trackLabel--status {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.tone--accent {
+  color: var(--accent);
+}
+
+.tone--pending {
+  color: var(--pending);
+}
+
+.tone--dim {
+  color: var(--dim);
+}
+
+.trackTitle {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.trackTitle--labelled {
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+.trackTitle--bare {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.trackBody {
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.trackBody--labelled {
+  margin-top: 6px;
+}
+
+.trackBody--bare {
+  margin-top: 8px;
+}
+
+/* ---------------------------------------------------------------------------
+   Closing
+--------------------------------------------------------------------------- */
+
+.closing {
+  padding-top: clamp(52px, 8vw, 96px);
+  padding-bottom: clamp(44px, 7vw, 80px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+}
+
+.closingTitle {
+  margin-top: 0;
+  max-width: 18ch;
+}
+
+.closingNote {
+  margin-top: 14px;
+  max-width: 46ch;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.closingActions {
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nextCard {
+  padding: 22px 24px;
+  background: rgba(28, 28, 28, 0.35);
+  border-radius: 16px;
+}
+
+.nextLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.nextLink {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  transition: color 200ms ease;
+}
+
+.nextLink:hover {
+  color: var(--accent);
+}
+
+.nextBlurb {
+  margin-top: 8px;
+  color: var(--body);
+}

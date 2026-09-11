@@ -1,0 +1,24 @@
+.strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+}
+
+.strip--narrow {
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+
+.cell {
+  padding-block: 22px;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.value {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--ink);
+}
