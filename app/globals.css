@@ -133,30 +133,6 @@ svg {
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spinBack {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.06);
-  }
-}
-
 @keyframes glowPulse {
   0%,
   100% {
@@ -381,7 +357,7 @@ svg {
 }
 
 /* --------------------------------------------------------------------------
-   Reduced motion — no starfield drift, no orbit rotation, no entrance
+   Reduced motion — no starfield drift, no shooting stars, no entrance
    transforms. Animations resolve instantly to their end state.
 --------------------------------------------------------------------------- */
 
