@@ -105,4 +105,6 @@ Carried over from the handoff, unchanged:
   before launch. The Medico Nexus roadmap stages are illustrative.
 - No privacy policy, terms or cookie handling exists yet.
 - `NEXT_PUBLIC_SITE_URL` sets the canonical origin for metadata, the sitemap and
-  `robots.txt`. It defaults to `https://astradite.com`; set it per environment.
+  `robots.txt` (see `lib/site.ts`). Unset, it falls back to the deployment's own
+  production URL on Vercel, then to `https://astradite.com`. Set it once a
+  custom domain is attached.
