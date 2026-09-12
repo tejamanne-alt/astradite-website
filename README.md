@@ -76,9 +76,14 @@ with the home hero spanning the full 1152px measure, 84px puts "Stellar
 Intelligence." at ~1074px of it. The floor scales below ~422px, where the
 headline has to wrap anyway.
 
-The one container query in the codebase pins the product hero mockup to the page
-margin once the grid has room for two columns — centred, it stopped ~100px short
-of the margin that the header, stat strip and every section below align to.
+Container queries are used in two places, both keyed to the element's own width
+rather than the viewport:
+
+- the product hero mockup is pinned to the page margin once the grid has room
+  for two columns — centred, it stopped ~100px short of the margin that the
+  header, stat strip and every section below align to;
+- the header sheds its in-page anchors below ~620px and the product name below
+  ~470px, so it stays one 68px row instead of wrapping into three.
 
 ## Motion
 
