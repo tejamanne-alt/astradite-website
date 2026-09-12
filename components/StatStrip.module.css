@@ -1,14 +1,13 @@
-/* The strip is a `ruleGrid`, so the 1px gaps draw the rules between cells —
-   vertical when the row fits, horizontal once it wraps. It is pulled out to the
-   shell's gutter so the outer cells' text still lines up with the page margin
-   while the rules sit between them. */
+/* No rules between the cells — the section's own bottom hairline is the only
+   line around the strip. The cells sit on the shell's gutter, so their text
+   lines up with the page margin like every other section. */
 .strip {
-  margin-inline: calc(var(--gutter) * -1);
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
 }
 
 .cell {
-  padding: 22px var(--gutter);
+  padding-block: 22px;
 }
 
 .label {

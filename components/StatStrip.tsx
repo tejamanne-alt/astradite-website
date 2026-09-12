@@ -10,7 +10,7 @@ export default function StatStrip({ items }: StatStripProps) {
   return (
     <section className="section">
       <div className="shell">
-        <dl className={`ruleGrid ${styles.strip}`}>
+        <dl className={styles.strip}>
           {items.map((item) => (
             <div key={item.label} className={styles.cell}>
               <dt className={`mono ${styles.label}`}>{item.label}</dt>
