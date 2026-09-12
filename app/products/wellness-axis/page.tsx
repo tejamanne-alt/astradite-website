@@ -97,7 +97,7 @@ const data: ProductPageData = {
       { label: CONTACT_EMAIL, href: CONTACT_MAILTO, variant: 'secondary', mono: true },
     ],
     next: {
-      label: 'NEXT IN ORBIT',
+      label: 'NEXT PRODUCT',
       name: 'Medico Nexus',
       href: '/products/medico-nexus',
       blurb: 'Every case, a colleague away. In progress.',

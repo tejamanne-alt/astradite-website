@@ -105,7 +105,7 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
             style={{ '--glow-alpha': data.glowAlpha ?? 0.1 } as CSSProperties}
           />
 
-          <div className={`shell shell--narrow ${styles.heroInner}`}>
+          <div className={`shell ${styles.heroInner}`}>
             <div>
               <div className={styles.heroMeta}>
                 <span className={`mono ${styles.heroOrdinal}`}>{data.kicker}</span>
@@ -129,14 +129,14 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
           </div>
         </section>
 
-        <StatStrip items={data.stats} narrow />
+        <StatStrip items={data.stats} />
 
         {/* The problem ----------------------------------------------------- */}
         <section className="section">
-          <div className={`shell shell--narrow sectionBody sectionBody--narrow ${styles.split}`}>
+          <div className={`shell sectionBody ${styles.split}`}>
             <Reveal>
               <div className="eyebrow">{data.problem.eyebrow}</div>
-              <h2 className={`h2 h2--product ${styles.splitHead}`}>{data.problem.title}</h2>
+              <h2 className={`h2 ${styles.splitHead}`}>{data.problem.title}</h2>
             </Reveal>
             <Reveal delay={100} className={styles.prose}>
               {data.problem.paragraphs.map((paragraph) => (
@@ -148,10 +148,10 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
 
         {/* What we built --------------------------------------------------- */}
         <section id="build" className="section">
-          <div className="shell shell--narrow sectionBody sectionBody--narrow">
+          <div className="shell sectionBody">
             <Reveal>
               <div className="eyebrow">{data.build.eyebrow}</div>
-              <h2 className={`h2 h2--product ${styles.buildHead}`}>{data.build.title}</h2>
+              <h2 className={`h2 ${styles.buildHead}`}>{data.build.title}</h2>
             </Reveal>
 
             <div className={`ruleGrid ${styles.buildGrid}`}>
@@ -168,10 +168,10 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
 
         {/* Flow / axes / status -------------------------------------------- */}
         <section className="section">
-          <div className="shell shell--narrow sectionBody sectionBody--narrow">
+          <div className="shell sectionBody">
             <Reveal>
               <div className="eyebrow">{data.track.eyebrow}</div>
-              <h2 className="h2 h2--product">{data.track.title}</h2>
+              <h2 className="h2">{data.track.title}</h2>
             </Reveal>
 
             <TrackTag
@@ -221,9 +221,9 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
 
         {/* Closing --------------------------------------------------------- */}
         <section>
-          <div className={`shell shell--narrow ${styles.closing}`}>
+          <div className={`shell ${styles.closing}`}>
             <Reveal>
-              <h2 className={`h2 h2--product ${styles.closingTitle}`}>{data.closing.title}</h2>
+              <h2 className={`h2 ${styles.closingTitle}`}>{data.closing.title}</h2>
               {data.closing.note ? <p className={styles.closingNote}>{data.closing.note}</p> : null}
               <div className={styles.closingActions}>
                 {data.closing.actions.map((action) => (
@@ -245,7 +245,7 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
         </section>
       </main>
 
-      <SiteFooter narrow href="/" />
+      <SiteFooter href="/" />
     </>
   )
 }
