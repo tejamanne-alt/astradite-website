@@ -1,7 +1,3 @@
-.footer {
-  border-top: 1px solid var(--hairline);
-}
-
 .inner {
   padding-block: 28px;
   display: flex;

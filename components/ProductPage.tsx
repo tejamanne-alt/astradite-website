@@ -128,7 +128,7 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
         </section>
 
         {/* The problem ----------------------------------------------------- */}
-        <section className="section">
+        <section>
           <div className={`shell sectionBody ${styles.split}`}>
             <Reveal>
               <div className="eyebrow">{data.problem.eyebrow}</div>
@@ -143,16 +143,16 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
         </section>
 
         {/* What we built --------------------------------------------------- */}
-        <section id="build" className="section">
+        <section id="build">
           <div className="shell sectionBody">
             <Reveal>
               <div className="eyebrow">{data.build.eyebrow}</div>
               <h2 className={`h2 ${styles.buildHead}`}>{data.build.title}</h2>
             </Reveal>
 
-            <div className={`ruleGrid ${styles.buildGrid}`}>
+            <div className={styles.buildGrid}>
               {data.build.cards.map((card, i) => (
-                <Reveal key={card.title} delay={i * 80} className={styles.buildCard}>
+                <Reveal key={card.title} delay={i * 80}>
                   {card.icon}
                   <h3 className={styles.buildCardTitle}>{card.title}</h3>
                   <p className="cardBody">{card.body}</p>
@@ -163,7 +163,7 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
         </section>
 
         {/* Flow / axes / status -------------------------------------------- */}
-        <section className="section">
+        <section>
           <div className="shell sectionBody">
             <Reveal>
               <div className="eyebrow">{data.track.eyebrow}</div>
