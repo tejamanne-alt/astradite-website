@@ -4,7 +4,6 @@ import type { CSSProperties, ReactNode } from 'react'
 import Reveal from './Reveal'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
-import StatStrip, { type Stat } from './StatStrip'
 import { ArrowUpRight } from './icons'
 import styles from './ProductPage.module.css'
 
@@ -43,7 +42,6 @@ export type ProductPageData = {
   }
   heroActions: Action[]
   mockup: ReactNode
-  stats: Stat[]
   problem: { eyebrow: string; title: string; paragraphs: string[] }
   build: {
     eyebrow: string
@@ -128,8 +126,6 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
             <div className={styles.mockupWrap}>{data.mockup}</div>
           </div>
         </section>
-
-        <StatStrip items={data.stats} />
 
         {/* The problem ----------------------------------------------------- */}
         <section className="section">

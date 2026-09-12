@@ -33,11 +33,6 @@ const data: ProductPageData = {
     { label: "How it's built", href: '#build', variant: 'secondary' },
   ],
   mockup: <DineOnTapMockup />,
-  stats: [
-    { label: 'SECTOR', value: 'Restaurants & hospitality' },
-    { label: 'STATUS', value: 'Live in production' },
-    { label: 'SURFACES', value: 'Guest web, kitchen, owner console' },
-  ],
   problem: {
     eyebrow: 'The problem',
     title: 'The busiest hour is the one you understand least.',

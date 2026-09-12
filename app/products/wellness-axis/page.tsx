@@ -33,11 +33,6 @@ const data: ProductPageData = {
     { label: "How it's built", href: '#build', variant: 'secondary' },
   ],
   mockup: <WellnessAxisMockup />,
-  stats: [
-    { label: 'SECTOR', value: 'Consumer health' },
-    { label: 'STATUS', value: 'Live in production' },
-    { label: 'CORE', value: 'Condition knowledge graph' },
-  ],
   problem: {
     eyebrow: 'The problem',
     title: 'Tracking is not the same as knowing.',

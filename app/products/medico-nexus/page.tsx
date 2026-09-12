@@ -35,11 +35,6 @@ const data: ProductPageData = {
     { label: "What we're building", href: '#build', variant: 'secondary' },
   ],
   mockup: <MedicoNexusMockup />,
-  stats: [
-    { label: 'SECTOR', value: 'Clinical networks' },
-    { label: 'STATUS', value: 'In active development' },
-    { label: 'ACCESS', value: 'Verified clinicians only' },
-  ],
   problem: {
     eyebrow: 'The problem',
     title: 'Someone has already seen your hardest case.',

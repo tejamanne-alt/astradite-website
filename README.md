@@ -62,9 +62,9 @@ chromatic accent anywhere.
 
 Every page runs the same system: one 1200px `--shell`, one `.sectionBody`
 rhythm, one `.h2` scale and one hero `clamp`. The product pages used to run a
-parallel, slightly smaller set — a 1120px measure, tighter section padding, a
-smaller H2 and stat strip — which made the site read as two designs. Those
-variants are gone.
+parallel, slightly smaller set — a 1120px measure, tighter section padding and
+a smaller H2 — which made the site read as two designs. Those variants are
+gone.
 
 No media queries. Every grid is `auto-fit` + `minmax()` and every type scale is
 `clamp()`, so the site reflows from 320px to 2560px on its own. Grid minimums
@@ -81,7 +81,7 @@ rather than the viewport:
 
 - the product hero mockup is pinned to the page margin once the grid has room
   for two columns — centred, it stopped ~100px short of the margin that the
-  header, stat strip and every section below align to;
+  header and every section below align to;
 - the header sheds its in-page anchors below ~620px and the product name below
   ~470px, so it stays one 68px row instead of wrapping into three.
 

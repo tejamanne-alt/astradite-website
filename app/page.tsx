@@ -5,7 +5,6 @@ import ScrollProgress from '@/components/ScrollProgress'
 import SiteFooter from '@/components/SiteFooter'
 import SiteHeader from '@/components/SiteHeader'
 import Starfield from '@/components/Starfield'
-import StatStrip from '@/components/StatStrip'
 import { ArrowRight } from '@/components/icons'
 import { CONTACT_EMAIL, CONTACT_MAILTO, products } from '@/lib/products'
 
@@ -57,12 +56,6 @@ const process = [
   },
 ]
 
-const stats = [
-  { label: 'PRODUCTS', value: 'Two live, one in progress' },
-  { label: 'DOMAINS', value: 'Hospitality, health, clinical networks' },
-  { label: 'BASED IN', value: 'Kurnool, Andhra Pradesh, India' },
-]
-
 const team = ['Akshanth V', 'Chandrahas Chatta', 'Teja Manne']
 
 export default function Home() {
@@ -112,8 +105,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <StatStrip items={stats} />
 
         {/* What we do ------------------------------------------------------ */}
         <section id="capabilities" className="section">
