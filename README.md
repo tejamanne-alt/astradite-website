@@ -91,7 +91,10 @@ Three client components carry all the motion; everything else is a server
 component.
 
 - `Starfield` — canvas starfield with upward drift, twinkle and a shooting star
-  every 5–11s. `ResizeObserver` for sizing, `devicePixelRatio` capped at 2.
+  every 5–11s. `ResizeObserver` for sizing, `devicePixelRatio` capped at 2. On
+  the home page it sits in a `position: fixed` backdrop behind every section, so
+  the sky stays put as the page scrolls; the product pages use a static glow
+  instead.
 - `ScrollProgress` — rAF-throttled passive scroll listener.
 - `Reveal` — entrance wrapper. The references drive entrances with
   `animation-timeline: view()`, which only Chromium implements, so this adds a

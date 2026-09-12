@@ -73,12 +73,15 @@ export default function Home() {
       />
 
       <main id="top" style={{ position: 'relative' }}>
+        {/* The sky sits behind the whole page and stays put while it scrolls. */}
+        <div className={styles.backdrop} aria-hidden="true">
+          <Starfield />
+          <div className={styles.glow} />
+          <div className={styles.glowFar} />
+        </div>
+
         {/* Hero ------------------------------------------------------------ */}
         <section className={styles.hero}>
-          <Starfield />
-          <div className={styles.glow} aria-hidden="true" />
-          <div className={styles.glowFar} aria-hidden="true" />
-
           <div className={`shell ${styles.heroInner}`}>
             <div>
               <div className={`eyebrow ${styles.heroEyebrow}`}>Astradite Private Limited</div>
@@ -106,7 +109,7 @@ export default function Home() {
           </div>
 
           {/* What we do ---------------------------------------------------- */}
-          <div id="capabilities" className={`shell sectionBody ${styles.capabilities}`}>
+          <div id="capabilities" className="shell sectionBody">
             <Reveal>
               <div className="eyebrow">What we do</div>
               <h2 className={`h2 ${styles.capabilityHead}`}>
