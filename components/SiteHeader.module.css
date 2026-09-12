@@ -6,6 +6,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--hairline);
+  container-type: inline-size;
 }
 
 .nav {
@@ -13,11 +14,8 @@
   display: flex;
   align-items: center;
   gap: 24px;
+  /* Wrapping is the fallback below ~330px, not the normal state. */
   flex-wrap: wrap;
-}
-
-.nav--product {
-  gap: 20px;
 }
 
 .brand {
@@ -44,11 +42,26 @@
   font-size: 14px;
 }
 
-.links {
+.navLinks {
   display: flex;
   align-items: center;
   gap: 22px;
-  flex-wrap: wrap;
+}
+
+/* The whole row needs ~580px to fit. Below that the header used to wrap into
+   three stacked rows — 161px of sticky bar on a phone. These drop the two
+   pieces a small screen can do without: the in-page anchors (every section is
+   a scroll away) and then the product name (the page's H1 says it anyway). */
+@container (max-width: 620px) {
+  .navLinks {
+    display: none;
+  }
+}
+
+@container (max-width: 470px) {
+  .productName {
+    display: none;
+  }
 }
 
 .link {

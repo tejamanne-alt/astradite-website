@@ -30,9 +30,7 @@ export default function SiteHeader({
 
   return (
     <header className={styles.header}>
-      <nav
-        className={`shell ${styles.nav}${isProduct ? ` ${styles['nav--product']}` : ''}`}
-      >
+      <nav className={`shell ${styles.nav}`}>
         <Link href={homeHref} className={`hit ${styles.brand}`}>
           <StarMark size={isProduct ? 18 : 20} />
           <span
@@ -45,38 +43,23 @@ export default function SiteHeader({
           {product ? <span className={styles.productName}>/ {product}</span> : null}
         </Link>
 
-        {isProduct ? (
-          links.map((link) => (
-            <Link key={link.href} href={link.href} className={`hit ${styles.link}`}>
-              {link.label}
-            </Link>
-          ))
-        ) : (
-          <div className={styles.links}>
+        {links.length > 0 ? (
+          <div className={styles.navLinks}>
             {links.map((link) => (
               <Link key={link.href} href={link.href} className={`hit ${styles.link}`}>
                 {link.label}
               </Link>
             ))}
-            <a
-              href={cta.href}
-              className={`hit ${styles.cta} ${styles[`cta--${ctaVariant}`]}`}
-              {...(cta.external ? { target: '_blank', rel: 'noopener' } : {})}
-            >
-              {cta.label}
-            </a>
           </div>
-        )}
-
-        {isProduct ? (
-          <a
-            href={cta.href}
-            className={`hit ${styles.cta} ${styles[`cta--${ctaVariant}`]}`}
-            {...(cta.external ? { target: '_blank', rel: 'noopener' } : {})}
-          >
-            {cta.label}
-          </a>
         ) : null}
+
+        <a
+          href={cta.href}
+          className={`hit ${styles.cta} ${styles[`cta--${ctaVariant}`]}`}
+          {...(cta.external ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          {cta.label}
+        </a>
       </nav>
     </header>
   )
