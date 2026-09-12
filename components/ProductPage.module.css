@@ -97,7 +97,7 @@
 }
 
 /* The mockup is narrower than its column, so centred it stops short of the
-   page margin that the header, stat strip and every section below align to.
+   page margin that the header and every section below align to.
    Once the grid actually has room for two columns (2 x 440px + the gap), pin
    it to that margin. Below it the hero is stacked and centred is right. */
 @container (min-width: 952px) {
