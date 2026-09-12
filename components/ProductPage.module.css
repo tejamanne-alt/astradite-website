@@ -5,7 +5,6 @@
 .hero {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--hairline);
 }
 
 .glow {
@@ -142,11 +141,9 @@
 
 .buildGrid {
   margin-top: clamp(32px, 5vw, 56px);
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-}
-
-.buildCard {
-  padding: 28px 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: clamp(28px, 3vw, 40px);
 }
 
 .buildCardTitle {

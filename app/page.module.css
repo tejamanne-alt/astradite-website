@@ -14,10 +14,6 @@
   pointer-events: none;
 }
 
-.hero {
-  border-bottom: 1px solid var(--hairline);
-}
-
 .glow,
 .glowFar {
   position: absolute;
@@ -115,11 +111,9 @@
 
 .cardGrid {
   margin-top: clamp(36px, 5vw, 60px);
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-}
-
-.card {
-  padding: 28px 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: clamp(28px, 3vw, 40px);
 }
 
 .cardOrdinal {
@@ -150,15 +144,10 @@
 }
 
 .productRow {
-  border-top: 1px solid var(--hairline);
   padding-block: clamp(28px, 4vw, 44px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: clamp(20px, 4vw, 56px);
-}
-
-.productRow:last-child {
-  border-bottom: 1px solid var(--hairline);
 }
 
 .productMeta {
@@ -236,11 +225,9 @@
 
 .processGrid {
   margin-top: clamp(36px, 5vw, 56px);
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-}
-
-.processItem {
-  padding: 26px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: clamp(28px, 3vw, 40px);
 }
 
 .processOrdinal {
@@ -289,7 +276,6 @@
 
 .contactBlock {
   padding-top: 18px;
-  border-top: 1px solid var(--hairline);
 }
 
 .contactBlock + .contactBlock {

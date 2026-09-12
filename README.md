@@ -54,7 +54,6 @@ chromatic accent anywhere.
 | `--accent` / `--accent-bright` | `#e8e8e8` / `#ffffff` | Buttons, badges, links |
 | `--ink` / `--body` | `#ffffff` / `#a3a3a3` | Headings / body copy |
 | `--dim` / `--recessive` / `--pending` | `#7a7a7a` / `#8a8a8a` / `#b0b0b0` | Metadata, ordinals, in-progress |
-| `--hairline` | `rgba(232,232,232,0.12)` | Dividers and 1px-gap card grids |
 
 `#7a7a7a` on `#000000` is the contrast floor at ~4.9:1 — nothing goes dimmer.
 

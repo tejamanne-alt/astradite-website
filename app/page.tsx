@@ -81,7 +81,7 @@ export default function Home() {
         </div>
 
         {/* Hero ------------------------------------------------------------ */}
-        <section className={styles.hero}>
+        <section>
           <div className={`shell ${styles.heroInner}`}>
             <div>
               <div className={`eyebrow ${styles.heroEyebrow}`}>Astradite Private Limited</div>
@@ -117,9 +117,9 @@ export default function Home() {
               </h2>
             </Reveal>
 
-            <div className={`ruleGrid ${styles.cardGrid}`}>
+            <div className={styles.cardGrid}>
               {capabilities.map((item, i) => (
-                <Reveal key={item.ordinal} delay={i * 80} className={styles.card}>
+                <Reveal key={item.ordinal} delay={i * 80}>
                   <div className={`mono ${styles.cardOrdinal}`}>{item.ordinal}</div>
                   <h3 className="cardTitle">{item.title}</h3>
                   <p className="cardBody">{item.body}</p>
@@ -130,7 +130,7 @@ export default function Home() {
         </section>
 
         {/* Products -------------------------------------------------------- */}
-        <section id="products" className="section">
+        <section id="products">
           <div className="shell sectionBody">
             <Reveal className={styles.productsHead}>
               <div>
@@ -191,16 +191,16 @@ export default function Home() {
         </section>
 
         {/* How we work ----------------------------------------------------- */}
-        <section id="process" className="section">
+        <section id="process">
           <div className="shell sectionBody">
             <Reveal>
               <div className="eyebrow">How we work</div>
               <h2 className={`h2 ${styles.processHead}`}>Four moves, repeated until it holds.</h2>
             </Reveal>
 
-            <ol className={`ruleGrid ${styles.processGrid}`}>
+            <ol className={styles.processGrid}>
               {process.map((step, i) => (
-                <Reveal as="li" key={step.ordinal} delay={i * 80} className={styles.processItem}>
+                <Reveal as="li" key={step.ordinal} delay={i * 80}>
                   <div className={`mono ${styles.processOrdinal}`}>{step.ordinal}</div>
                   <h3 className={styles.processTitle}>{step.title}</h3>
                   <p className={styles.processBody}>{step.body}</p>

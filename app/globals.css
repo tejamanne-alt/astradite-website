@@ -18,7 +18,6 @@
   --dim: #7a7a7a;
   --recessive: #8a8a8a;
   --pending: #b0b0b0;
-  --hairline: rgba(232, 232, 232, 0.12);
 
   /* Layout */
   --shell: 1200px;
@@ -199,23 +198,8 @@ svg {
   padding-inline: var(--gutter);
 }
 
-.section {
-  border-bottom: 1px solid var(--hairline);
-}
-
 .sectionBody {
   padding-block: clamp(56px, 9vw, 104px);
-}
-
-/* A 1px-gap grid over a hairline background: the gap itself draws the rules. */
-.ruleGrid {
-  display: grid;
-  gap: 1px;
-  background: var(--hairline);
-}
-
-.ruleGrid > * {
-  background: var(--bg);
 }
 
 /* --------------------------------------------------------------------------

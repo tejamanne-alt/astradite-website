@@ -17,7 +17,7 @@ export default function SiteFooter({ href }: SiteFooterProps) {
   )
 
   return (
-    <footer className={styles.footer}>
+    <footer>
       <div className={`shell ${styles.inner}`}>
         {href ? (
           <Link href={href} className={`hit ${styles.brand}`}>
