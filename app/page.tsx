@@ -104,11 +104,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
 
-        {/* What we do ------------------------------------------------------ */}
-        <section id="capabilities" className="section">
-          <div className="shell sectionBody">
+          {/* What we do ---------------------------------------------------- */}
+          <div id="capabilities" className={`shell sectionBody ${styles.capabilities}`}>
             <Reveal>
               <div className="eyebrow">What we do</div>
               <h2 className={`h2 ${styles.capabilityHead}`}>
