@@ -4,17 +4,12 @@ export type Stat = { label: string; value: string }
 
 type StatStripProps = {
   items: Stat[]
-  narrow?: boolean
 }
 
-export default function StatStrip({ items, narrow = false }: StatStripProps) {
+export default function StatStrip({ items }: StatStripProps) {
   return (
     <section className="section">
-      <dl
-        className={`shell${narrow ? ' shell--narrow' : ''} ${styles.strip}${
-          narrow ? ` ${styles['strip--narrow']}` : ''
-        }`}
-      >
+      <dl className={`shell ${styles.strip}`}>
         {items.map((item) => (
           <div key={item.label} className={styles.cell}>
             <dt className={`mono ${styles.label}`}>{item.label}</dt>

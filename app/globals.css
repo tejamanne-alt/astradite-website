@@ -22,7 +22,6 @@
 
   /* Layout */
   --shell: 1200px;
-  --shell-narrow: 1120px;
   --gutter: 24px;
 
   /* Motion */
@@ -200,20 +199,12 @@ svg {
   padding-inline: var(--gutter);
 }
 
-.shell--narrow {
-  max-width: var(--shell-narrow);
-}
-
 .section {
   border-bottom: 1px solid var(--hairline);
 }
 
 .sectionBody {
   padding-block: clamp(56px, 9vw, 104px);
-}
-
-.sectionBody--narrow {
-  padding-block: clamp(52px, 8vw, 96px);
 }
 
 /* A 1px-gap grid over a hairline background: the gap itself draws the rules. */
@@ -252,11 +243,6 @@ svg {
   line-height: 1.05;
   letter-spacing: -0.01em;
   color: var(--ink);
-}
-
-.h2--product {
-  font-size: clamp(26px, 3.6vw, 42px);
-  line-height: 1.06;
 }
 
 .cardTitle {

@@ -143,7 +143,7 @@ export default function Home() {
             <Reveal className={styles.productsHead}>
               <div>
                 <div className="eyebrow">Products</div>
-                <h2 className="h2">Three things in orbit.</h2>
+                <h2 className="h2">Three products, one foundation.</h2>
               </div>
               <p className={styles.productsIntro}>
                 Everything we ship is our own product first. Each one leaves behind infrastructure

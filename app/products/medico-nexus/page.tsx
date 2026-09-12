@@ -110,7 +110,7 @@ const data: ProductPageData = {
     note: "We're assembling the pilot cohort now. Write to us and tell us your specialty.",
     actions: [{ label: CONTACT_EMAIL, href: EARLY_ACCESS, variant: 'primary' }],
     next: {
-      label: 'BACK IN ORBIT',
+      label: 'NEXT PRODUCT',
       name: 'DineOnTap',
       href: '/products/dineontap',
       blurb: 'Scan. Order. Know your customers.',

@@ -60,21 +60,25 @@ chromatic accent anywhere.
 
 ## Layout rules
 
-No media queries anywhere. Every grid is `auto-fit` + `minmax()` and every type
-scale is `clamp()`, so the site reflows from 320px to 2560px on its own. Grid
-minimums are wrapped in `min(…, 100%)` so a track can never be wider than its
-container.
+Every page runs the same system: one 1200px `--shell`, one `.sectionBody`
+rhythm, one `.h2` scale and one hero `clamp`. The product pages used to run a
+parallel, slightly smaller set — a 1120px measure, tighter section padding, a
+smaller H2 and stat strip — which made the site read as two designs. Those
+variants are gone.
 
-Two clamp floors scale below ~467px (home H1) and ~445px (product H1) — at a
-fixed floor, `Intelligence.` and `DineOnTap` are individually wider than the
-content box at 375px. The product H1 resolves to the design's original
-`clamp(40px, 4.6vw, 54px)` above that width.
+No media queries. Every grid is `auto-fit` + `minmax()` and every type scale is
+`clamp()`, so the site reflows from 320px to 2560px on its own. Grid minimums
+are wrapped in `min(…, 100%)` so a track can never be wider than its container.
 
-The home H1 runs `clamp(min(42px, 9vw), 6vw, 76px)`. The design's 58px ceiling
-was tuned for the ~540px column beside the old hero art; with the hero spanning
-the full 1152px shell, 76px puts "Stellar Intelligence." at ~1060px of the
-measure so the headline fills the width rather than stranding it. It breaks over
-two lines from ~700px up, three below.
+Both hero H1s share `clamp(min(38px, 9vw), 6.4vw, 84px)`. The design's original
+58px/54px ceilings were tuned for the narrow columns beside the old hero art;
+with the home hero spanning the full 1152px measure, 84px puts "Stellar
+Intelligence." at ~1074px of it. The floor scales below ~422px, where the
+headline has to wrap anyway.
+
+The one container query in the codebase pins the product hero mockup to the page
+margin once the grid has room for two columns — centred, it stopped ~100px short
+of the margin that the header, stat strip and every section below align to.
 
 ## Motion
 
@@ -95,7 +99,8 @@ stop, and entrance transforms resolve immediately.
 The design reference pairs the hero copy with an orbit diagram — concentric
 rings, a centre star and three rotating product chips. That has been removed;
 the hero is a single copy column spanning the full shell, with the starfield and
-its two radial glows behind it.
+its two radial glows behind it. The copy that leaned on the metaphor went with
+it: the products heading and the next-product cards no longer say "orbit".
 
 ## Accessibility
 

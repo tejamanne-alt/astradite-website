@@ -31,9 +31,7 @@ export default function SiteHeader({
   return (
     <header className={styles.header}>
       <nav
-        className={`shell${isProduct ? ' shell--narrow' : ''} ${styles.nav}${
-          isProduct ? ` ${styles['nav--product']}` : ''
-        }`}
+        className={`shell ${styles.nav}${isProduct ? ` ${styles['nav--product']}` : ''}`}
       >
         <Link href={homeHref} className={`hit ${styles.brand}`}>
           <StarMark size={isProduct ? 18 : 20} />

@@ -32,6 +32,7 @@
   grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
   gap: clamp(36px, 6vw, 72px);
   align-items: center;
+  container-type: inline-size;
 }
 
 .heroMeta {
@@ -51,9 +52,8 @@
   margin-top: 18px;
   font-family: var(--font-display), sans-serif;
   font-weight: 800;
-  /* Floor scales below ~445px so the longest product name still fits the
-     content box; at 445px and up this is exactly clamp(40px, 4.6vw, 54px). */
-  font-size: clamp(min(40px, 9vw), 4.6vw, 54px);
+  /* Same scale as the home hero so the two read as one system. */
+  font-size: clamp(min(38px, 9vw), 6.4vw, 84px);
   line-height: 1;
   letter-spacing: -0.015em;
   color: var(--ink);
@@ -94,6 +94,16 @@
   display: flex;
   justify-content: center;
   animation: fadeIn 1200ms ease 300ms both;
+}
+
+/* The mockup is narrower than its column, so centred it stops short of the
+   page margin that the header, stat strip and every section below align to.
+   Once the grid actually has room for two columns (2 x 440px + the gap), pin
+   it to that margin. Below it the hero is stacked and centred is right. */
+@container (min-width: 952px) {
+  .mockupWrap {
+    justify-content: flex-end;
+  }
 }
 
 /* ---------------------------------------------------------------------------
