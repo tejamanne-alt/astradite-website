@@ -9,14 +9,16 @@ type StatStripProps = {
 export default function StatStrip({ items }: StatStripProps) {
   return (
     <section className="section">
-      <dl className={`shell ${styles.strip}`}>
-        {items.map((item) => (
-          <div key={item.label} className={styles.cell}>
-            <dt className={`mono ${styles.label}`}>{item.label}</dt>
-            <dd className={styles.value}>{item.value}</dd>
-          </div>
-        ))}
-      </dl>
+      <div className="shell">
+        <dl className={`ruleGrid ${styles.strip}`}>
+          {items.map((item) => (
+            <div key={item.label} className={styles.cell}>
+              <dt className={`mono ${styles.label}`}>{item.label}</dt>
+              <dd className={styles.value}>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   )
 }
