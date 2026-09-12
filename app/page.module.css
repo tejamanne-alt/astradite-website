@@ -2,9 +2,19 @@
    Hero
 --------------------------------------------------------------------------- */
 
-.hero {
-  position: relative;
+/* Fixed to the viewport rather than to any section, so the stars hold still
+   while the page scrolls over them. `z-index: -1` puts it above the body's
+   background but below every section: nothing between here and <html> opens a
+   stacking context or paints a background, so the layer stays visible. */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   overflow: hidden;
+  pointer-events: none;
+}
+
+.hero {
   border-bottom: 1px solid var(--hairline);
 }
 
@@ -16,10 +26,10 @@
 }
 
 .glow {
-  /* Offsets were -24%/-34% of the hero's height. The section now runs to the
-     end of "What we do", so a percentage would pull the glows far out of
-     frame; these are the pixel values those percentages resolved to. */
-  top: -119px;
+  /* Offsets are viewport-relative now that the glows hang off `.backdrop`
+     rather than the hero. These put them where they sat at the top of the
+     page, minus the 68px header the hero used to start below. */
+  top: -51px;
   left: 46%;
   width: 900px;
   height: 900px;
@@ -28,7 +38,7 @@
 }
 
 .glowFar {
-  top: -169px;
+  top: -101px;
   right: -10%;
   width: 820px;
   height: 820px;
@@ -36,14 +46,7 @@
 }
 
 .heroInner {
-  position: relative;
   padding-top: clamp(64px, 11vh, 132px);
-}
-
-/* Both blocks sit above the starfield canvas, which is absolutely positioned
-   and would otherwise paint over static content. */
-.capabilities {
-  position: relative;
 }
 
 .heroEyebrow {

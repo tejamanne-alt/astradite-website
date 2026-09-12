@@ -14,9 +14,12 @@ const SHOT_VX = -0.16
 const SHOT_VY = 0.34
 
 /**
- * The hero starfield. Stars drift upward and twinkle; a shooting star crosses
- * every 5–11s. Under `prefers-reduced-motion` the drift and the shooting stars
- * stop and the field renders as a still sky.
+ * The starfield. Stars drift upward and twinkle; a shooting star crosses every
+ * 5–11s. Under `prefers-reduced-motion` the drift and the shooting stars stop
+ * and the field renders as a still sky.
+ *
+ * It fills its nearest positioned ancestor. On the home page that is a fixed,
+ * viewport-sized backdrop, so the sky holds still while the page scrolls.
  */
 export default function Starfield({ density = 1 }: StarfieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
