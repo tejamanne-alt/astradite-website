@@ -87,9 +87,11 @@ export default function Home() {
             <div>
               <div className={`eyebrow ${styles.heroEyebrow}`}>Astradite Private Limited</div>
               <h1 className={styles.heroTitle}>
-                <span className={styles.heroWord}>Stellar</span>{' '}
-                <span className={styles.heroWord}>Intelligence.</span>{' '}
-                <span className={styles.heroWord}>Applied.</span>
+                <span className={styles.heroPhrase}>
+                  <span className={styles.heroWord}>Stellar</span>{' '}
+                  <span className={styles.heroWord}>Intelligence.</span>
+                </span>{' '}
+                <span className={`${styles.heroWord} ${styles.heroApplied}`}>Applied.</span>
               </h1>
               <p className={styles.heroLede}>
                 Astradite is where profound intelligence meets limitless imagination. Rooted in
