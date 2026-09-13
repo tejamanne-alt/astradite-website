@@ -11,7 +11,7 @@ production code) and rebuilt in Next.js per that brief.
 
 - Next.js 16 (App Router) · React 19 · TypeScript
 - CSS Modules + a global token layer — no CSS framework
-- `next/font/google` for Playfair Display, DM Sans and JetBrains Mono
+- `next/font/google` for Raleway, DM Sans and JetBrains Mono
 - `@vercel/analytics` is the only runtime dependency beyond Next.js itself.
   Every icon and the logo are inline SVG; there are no images.
 
@@ -73,11 +73,14 @@ No media queries. Every grid is `auto-fit` + `minmax()` and every type scale is
 `clamp()`, so the site reflows from 320px to 2560px on its own. Grid minimums
 are wrapped in `min(…, 100%)` so a track can never be wider than its container.
 
-Both hero H1s share `clamp(min(38px, 9vw), 6.4vw, 84px)`. The design's original
+Both hero H1s share `clamp(min(38px, 9vw), 6.4vw, 80px)`. The design's original
 58px/54px ceilings were tuned for the narrow columns beside the old hero art;
-with the home hero spanning the full 1152px measure, 84px puts "Stellar
-Intelligence." at ~1074px of it. The floor scales below ~422px, where the
-headline has to wrap anyway.
+with the home hero spanning the full 1152px measure, 80px puts "Stellar
+Intelligence. Applied." at ~1075px of it (93%). The ceiling belongs to the face,
+not the layout — it is set by where the line wraps, so it moves whenever the
+display font changes. Raleway needed 84px cut to 80px; at 84px it measured 1129px
+of the 1152px box, 23px from wrapping, and a wrap drops fill to ~70%. The floor
+scales below ~422px, where the headline has to wrap anyway.
 
 Container queries are used in two places, both keyed to the element's own width
 rather than the viewport:
