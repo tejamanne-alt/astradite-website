@@ -12,7 +12,7 @@ export const contentType = 'image/png'
 async function loadDisplayFont(): Promise<ArrayBuffer | null> {
   try {
     const css = await fetch(
-      'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800',
+      'https://fonts.googleapis.com/css2?family=Raleway:wght@800',
     ).then((res) =>
       res.ok ? res.text() : '',
     )
@@ -39,7 +39,7 @@ export default async function OpengraphImage() {
           justifyContent: 'space-between',
           background: 'linear-gradient(135deg, #101010 0%, #000000 58%)',
           padding: '84px 88px',
-          fontFamily: 'Playfair Display',
+          fontFamily: 'Raleway',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -108,7 +108,7 @@ export default async function OpengraphImage() {
       fonts: displayFont
         ? [
             {
-              name: 'Playfair Display',
+              name: 'Raleway',
               data: displayFont,
               weight: 800 as const,
               style: 'normal' as const,

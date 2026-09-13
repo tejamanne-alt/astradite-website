@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
-import { DM_Sans, JetBrains_Mono, Playfair_Display } from 'next/font/google'
+import { DM_Sans, JetBrains_Mono, Raleway } from 'next/font/google'
 
 import { siteUrl } from '@/lib/site'
 
 import './globals.css'
 
-const playfair = Playfair_Display({
+const raleway = Raleway({
   subsets: ['latin'],
   weight: ['600', '700', '800'],
   variable: '--font-display',
@@ -71,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${dmSans.variable} ${jetBrainsMono.variable}`}
+      className={`${raleway.variable} ${dmSans.variable} ${jetBrainsMono.variable}`}
     >
       <body>
         {/* Without JS the IntersectionObserver never fires, so neutralise the
