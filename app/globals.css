@@ -49,12 +49,7 @@ body {
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  /* `clip`, not `hidden`: `hidden` makes <body> a scroll container, which is
-     what stops `position: sticky` working on the header in iOS Safari. `clip`
-     keeps the guard against stray horizontal overflow without that. Nothing
-     currently overflows at 320-1920px, so this is a safety net, not load-
-     bearing. */
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 h1,
