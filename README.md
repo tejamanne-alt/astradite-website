@@ -42,8 +42,12 @@ npm run lint
 ## Design system
 
 Tokens live on `:root` in `app/globals.css`. The palette is deliberately
-monochrome — hierarchy is carried entirely by luminance, and there is no
-chromatic accent anywhere.
+monochrome — hierarchy is carried entirely by luminance — with exactly one
+chromatic exception: "Applied." in the home hero, which is painted with an
+accretion-disk gradient (ember `#c25a1c` through amber to a `#fff4e0` core and
+back) clipped to the glyphs. It is duplicated in `app/opengraph-image.tsx`,
+since Satori cannot read the stylesheet; the two must be changed together.
+Nothing else on the site carries hue.
 
 | Token | Value | Use |
 | --- | --- | --- |

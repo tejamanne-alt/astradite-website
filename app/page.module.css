@@ -78,9 +78,32 @@
   animation-delay: 240ms;
 }
 
+/* "Applied." is the one chromatic note on the site: an accretion disk, ember at
+   both edges through amber to a hot near-white core. The ramp bottoms out at
+   #c25a1c, ~4.8:1 on black, so it holds the palette's contrast floor. */
 .heroWord:nth-child(3) {
   color: var(--accent);
   animation-delay: 380ms;
+}
+
+/* Guarded: without `background-clip: text` the transparent fill would erase the
+   word rather than degrade to the flat accent above. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .heroWord:nth-child(3) {
+    background-image: linear-gradient(
+      100deg,
+      #c25a1c 0%,
+      #e88b30 18%,
+      #ffbe62 38%,
+      #fff4e0 54%,
+      #ffc06a 72%,
+      #d9701f 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .heroLede {
