@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import type { CSSProperties, ReactNode } from 'react'
 
+import { products, type ProductSlug } from '@/lib/products'
+
 import Reveal from './Reveal'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
@@ -26,6 +28,8 @@ export type TrackItem = {
 }
 
 export type ProductPageData = {
+  /** Looks the product's brand colour up in `lib/products.ts`. */
+  slug: ProductSlug
   name: string
   /** Mono kicker beside the status pill, e.g. "PRODUCT 01". */
   kicker: string
@@ -86,6 +90,7 @@ function ActionLink({ action }: { action: Action }) {
 }
 
 export default function ProductPage({ data }: { data: ProductPageData }) {
+  const accent = products.find((product) => product.slug === data.slug)?.accent
   const trackItems = data.track.items
   const labelVariant = data.track.labelVariant ?? 'step'
   const TrackTag = data.track.ordered === false ? 'div' : 'ol'
@@ -113,7 +118,12 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
                   {data.statusLabel}
                 </span>
               </div>
-              <h1 className={styles.heroTitle}>{data.name}</h1>
+              <h1
+                className={styles.heroTitle}
+                style={accent ? ({ '--product-accent': accent } as CSSProperties) : undefined}
+              >
+                {data.name}
+              </h1>
               <p className={styles.heroTagline}>{data.tagline}</p>
               <p className={styles.heroBody}>{data.description}</p>
               <div className={styles.heroActions}>

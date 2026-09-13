@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 }
 
 const data: ProductPageData = {
+  slug: 'dineontap',
   name: 'DineOnTap',
   kicker: 'PRODUCT 01',
   status: 'live',
