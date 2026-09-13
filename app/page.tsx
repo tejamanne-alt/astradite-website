@@ -64,7 +64,6 @@ export default function Home() {
     <>
       <ScrollProgress />
       <SiteHeader
-        id="top"
         homeHref="#top"
         links={[
           { label: 'What we do', href: '#capabilities' },
@@ -74,7 +73,7 @@ export default function Home() {
         cta={{ label: 'Get in touch', href: CONTACT_MAILTO }}
       />
 
-      <main style={{ position: 'relative' }}>
+      <main id="top" style={{ position: 'relative' }}>
         {/* The sky sits behind the whole page and stays put while it scrolls. */}
         <div className={styles.backdrop} aria-hidden="true">
           <Starfield />
