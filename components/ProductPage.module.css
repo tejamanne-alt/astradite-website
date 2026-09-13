@@ -55,7 +55,9 @@
   font-size: clamp(min(38px, 9vw), 6.4vw, 84px);
   line-height: 1;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  /* The product's own brand colour, resolved from its slug; `--ink` if it has
+     none. Matches `.productNameLink` on the home page. */
+  color: var(--product-accent, var(--ink));
   text-wrap: balance;
   animation: rise 800ms var(--ease-out) both;
 }

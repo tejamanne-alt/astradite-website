@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 }
 
 const data: ProductPageData = {
+  slug: 'medico-nexus',
   name: 'Medico Nexus',
   kicker: 'PRODUCT 03',
   status: 'in-progress',

@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 }
 
 const data: ProductPageData = {
+  slug: 'wellness-axis',
   name: 'Wellness Axis',
   kicker: 'PRODUCT 02',
   status: 'live',
