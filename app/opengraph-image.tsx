@@ -53,10 +53,19 @@ export default async function OpengraphImage() {
           <div
             style={{
               display: 'flex',
+              alignSelf: 'flex-start',
               fontSize: 104,
               lineHeight: 1.02,
               letterSpacing: '-0.015em',
-              color: '#ffffff',
+              // Keep in sync with `.heroPhrase` in app/page.module.css.
+              backgroundImage:
+                'linear-gradient(100deg, #6fc9d4 0%, #8fb6e6 22%, #b3a6e4 44%, #e3a2c8 66%, #f6c6c0 85%, #ffe8d8 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              // The "g" needs the paint box past the baseline, as "pp" does below.
+              paddingBottom: 15,
+              marginBottom: -15,
             }}
           >
             Stellar Intelligence.

@@ -76,26 +76,72 @@
   animation: wordRise 900ms var(--ease-out) both;
 }
 
-.heroWord:nth-child(1) {
+/* Scoped to the phrase. Unscoped, `:nth-child(2)` also matched "Applied." once
+   the first two words gained a wrapper — and at (0,2,0) it outranks the
+   `.heroApplied` class, so the last word inherited the 240ms delay and the
+   stagger collapsed onto two beats instead of three. */
+.heroPhrase .heroWord:nth-child(1) {
   animation-delay: 120ms;
 }
 
-.heroWord:nth-child(2) {
+.heroPhrase .heroWord:nth-child(2) {
   animation-delay: 240ms;
 }
 
-/* "Applied." is the one chromatic note on the site: an accretion disk, ember at
-   both edges through amber to a hot near-white core. The ramp bottoms out at
-   #c25a1c, ~4.8:1 on black, so it holds the palette's contrast floor. */
-.heroWord:nth-child(3) {
+/* The headline runs one sweep: the wormhole's cool end across "Stellar
+   Intelligence.", then the accretion disk's hot end on "Applied." — teal
+   through rose to a warm white, handing off to ember through amber to a white
+   core. The cool ramp is one gradient over BOTH words rather than one per word,
+   which is why they share a wrapper; restarting it on each word would read as
+   two gradients instead of a continuous spectrum.
+
+   Darkest stop of either ramp: #c25a1c at ~4.8:1 on black, the palette's floor.
+   The cool ramp bottoms out at 9.5:1. */
+.heroPhrase {
+  display: inline-block;
+}
+
+.heroApplied {
   color: var(--accent);
   animation-delay: 380ms;
 }
 
 /* Guarded: without `background-clip: text` the transparent fill would erase the
-   word rather than degrade to the flat accent above. */
+   text rather than degrade to the flat colours above. */
 @supports (background-clip: text) or (-webkit-background-clip: text) {
-  .heroWord:nth-child(3) {
+  .heroPhrase,
+  .heroApplied {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    /* A clipped gradient only paints inside the background box, and at
+       line-height 1 that box is the em square, not the font's own 1.34em line.
+       Half-leading crops it to 0.085em below the baseline while the descenders
+       on "pp" — and the "g" in Intelligence. — run to 0.183em, so their tails
+       fell outside the paint and disappeared. The padding buys back the ~0.1em shortfall with headroom;
+       the matching negative margin keeps the line box the size it was, since
+       an inline-block contributes its margin box. */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+
+  /* Wormhole: teal through periwinkle and rose to a warm white that hands off
+     to the ember below. */
+  .heroPhrase {
+    background-image: linear-gradient(
+      100deg,
+      #6fc9d4 0%,
+      #8fb6e6 22%,
+      #b3a6e4 44%,
+      #e3a2c8 66%,
+      #f6c6c0 85%,
+      #ffe8d8 100%
+    );
+  }
+
+  /* Accretion disk: ember at both edges through amber to a hot near-white. */
+  .heroApplied {
     background-image: linear-gradient(
       100deg,
       #c25a1c 0%,
@@ -105,19 +151,6 @@
       #ffc06a 72%,
       #d9701f 100%
     );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    /* A clipped gradient only paints inside the background box, and at
-       line-height 1 that box is the em square, not the font's own 1.34em line.
-       Half-leading crops it to 0.085em below the baseline while the descenders
-       on "pp" run to 0.183em, so their tails fell outside the paint and
-       disappeared. The padding buys back the ~0.1em shortfall with headroom;
-       the matching negative margin keeps the line box the size it was, since
-       an inline-block contributes its margin box. */
-    padding-bottom: 0.14em;
-    margin-bottom: -0.14em;
   }
 }
 
