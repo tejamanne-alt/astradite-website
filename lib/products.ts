@@ -11,6 +11,12 @@ export type ProductSummary = {
   description: string
   caseStudyLabel: string
   domain?: { label: string; href: string }
+  /**
+   * The product's own brand colour, taken from its live site rather than
+   * chosen here, and used for its name in the products list. Products without
+   * one keep the neutral `--ink`, so this stays opt-in per product.
+   */
+  accent?: string
 }
 
 export const products: ProductSummary[] = [
@@ -39,6 +45,9 @@ export const products: ProductSummary[] = [
       'You can log everything and still not know what any of it did. Wellness Axis runs your food, activity and sleep through a knowledge graph and projects a signed impact score against the conditions you actually live with.',
     caseStudyLabel: 'Read the case study',
     domain: { label: 'wellnessaxis.app', href: 'https://wellnessaxis.app' },
+    // `<meta name="theme-color">` on wellnessaxis.app, which its
+    // manifest.webmanifest repeats as `theme_color`.
+    accent: '#0C9268',
   },
   {
     slug: 'medico-nexus',

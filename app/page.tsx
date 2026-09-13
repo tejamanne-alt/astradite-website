@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 
 import Reveal from '@/components/Reveal'
 import ScrollProgress from '@/components/ScrollProgress'
@@ -158,7 +159,18 @@ export default function Home() {
                       </span>
                     </div>
                     <h3 className={styles.productName}>
-                      <Link href={product.href} className={`hit ${styles.productNameLink}`}>
+                      <Link
+                        href={product.href}
+                        className={`hit ${styles.productNameLink}`}
+                        style={
+                          product.accent
+                            ? ({
+                                '--product-accent': product.accent,
+                                '--product-accent-hover': `color-mix(in oklab, ${product.accent} 72%, #fff)`,
+                              } as CSSProperties)
+                            : undefined
+                        }
+                      >
                         {product.name}
                       </Link>
                     </h3>
