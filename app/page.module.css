@@ -202,13 +202,17 @@
   line-height: 1.05;
 }
 
+/* A product that carries a brand colour paints its name in it; the rest keep
+   `--ink`. Hover lifts the brand colour toward white instead of washing it out
+   to the neutral accent, which is still the fallback for the uncoloured ones
+   and for browsers without color-mix(). */
 .productNameLink {
-  color: var(--ink);
+  color: var(--product-accent, var(--ink));
   transition: color 200ms ease;
 }
 
 .productNameLink:hover {
-  color: var(--accent);
+  color: var(--product-accent-hover, var(--accent));
 }
 
 .productTagline {
