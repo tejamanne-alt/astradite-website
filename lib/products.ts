@@ -12,9 +12,12 @@ export type ProductSummary = {
   caseStudyLabel: string
   domain?: { label: string; href: string }
   /**
-   * The product's own brand colour, taken from its live site rather than
-   * chosen here, and used for its name in the products list. Products without
-   * one keep the neutral `--ink`, so this stays opt-in per product.
+   * The product's own brand colour, used for its name in the products list.
+   * Never picked here to suit the page: Wellness Axis's is the `theme-color`
+   * its own site publishes, and the other two were given by the team. Each
+   * clears the palette's 4.9:1 floor on black — DineOnTap 6.3:1, Wellness Axis
+   * 5.3:1, Medico Nexus 15.3:1 — so re-check any replacement before swapping
+   * it in. Products without one keep the neutral `--ink`.
    */
   accent?: string
 }
@@ -32,6 +35,7 @@ export const products: ProductSummary[] = [
       'A table orders, eats and leaves — and most restaurants learn nothing from it. DineOnTap turns a QR code on the table into a live menu, a kitchen ticket, and a picture of who keeps coming back.',
     caseStudyLabel: 'Read the case study',
     domain: { label: 'dineontap.com', href: 'https://dineontap.com' },
+    accent: '#FF4D1C',
   },
   {
     slug: 'wellness-axis',
@@ -45,8 +49,6 @@ export const products: ProductSummary[] = [
       'You can log everything and still not know what any of it did. Wellness Axis runs your food, activity and sleep through a knowledge graph and projects a signed impact score against the conditions you actually live with.',
     caseStudyLabel: 'Read the case study',
     domain: { label: 'wellnessaxis.app', href: 'https://wellnessaxis.app' },
-    // `<meta name="theme-color">` on wellnessaxis.app, which its
-    // manifest.webmanifest repeats as `theme_color`.
     accent: '#0C9268',
   },
   {
@@ -60,6 +62,7 @@ export const products: ProductSummary[] = [
     description:
       'Medicine is a collective discipline, practiced alone. Medico Nexus is a network where a clinician can pose a de-identified case and reach the peers who have already seen it. In progress.',
     caseStudyLabel: "Read what we're building",
+    accent: '#90E9FF',
   },
 ]
 
