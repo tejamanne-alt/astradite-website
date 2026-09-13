@@ -2,10 +2,27 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  container-type: inline-size;
+}
+
+/* The blurred ground is a child, not the sticky box itself. iOS Safari
+   routinely fails to paint a `backdrop-filter` that sits ON a sticky element
+   until something forces a repaint, which leaves the header invisible from
+   first paint and makes it appear the moment you scroll — the reported
+   symptom. A plain sticky box with the filter on an absolutely positioned
+   child paints straight away.
+
+   `container-type: inline-size` above makes the header a containing block, so
+   `inset: 0` resolves against it; the negative z-index keeps the ground behind
+   the nav within the stacking context the header's own z-index opens. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: var(--header-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  container-type: inline-size;
 }
 
 .nav {
