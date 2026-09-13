@@ -25,7 +25,8 @@
 
 .heroInner {
   position: relative;
-  padding-top: clamp(52px, 9vh, 100px);
+  /* Width-keyed for the same reason as the home hero's. */
+  padding-top: clamp(36px, 6.5vw, 100px);
   padding-bottom: clamp(44px, 7vh, 84px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));

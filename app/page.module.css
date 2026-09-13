@@ -41,8 +41,13 @@
   background: radial-gradient(circle, rgba(232, 232, 232, 0.05), rgba(232, 232, 232, 0) 58%);
 }
 
+/* Keyed to viewport WIDTH, not height. On `vh` this scaled the wrong way: a
+   tall phone reserved more space above the headline than a laptop did — 103px
+   on a 393x932 handset against 99px at 1280x900 — so the narrowest screens,
+   with the least room to spare, got the largest gap. Width tracks how much
+   room there actually is. */
 .heroInner {
-  padding-top: clamp(64px, 11vh, 132px);
+  padding-top: clamp(40px, 8vw, 120px);
 }
 
 .heroEyebrow {
