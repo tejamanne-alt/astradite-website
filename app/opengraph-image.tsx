@@ -74,6 +74,11 @@ export default async function OpengraphImage() {
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               color: 'transparent',
+              // Same descender clip as the page: the paint box stops at the em
+              // square, so the tails of "pp" fall outside it. 0.14em back,
+              // negated so the card's layout does not shift.
+              paddingBottom: 15,
+              marginBottom: -15,
             }}
           >
             Applied.

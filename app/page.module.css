@@ -103,6 +103,15 @@
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+    /* A clipped gradient only paints inside the background box, and at
+       line-height 1 that box is the em square, not the font's own 1.34em line.
+       Half-leading crops it to 0.085em below the baseline while the descenders
+       on "pp" run to 0.183em, so their tails fell outside the paint and
+       disappeared. The padding buys back the ~0.1em shortfall with headroom;
+       the matching negative margin keeps the line box the size it was, since
+       an inline-block contributes its margin box. */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
   }
 }
 
