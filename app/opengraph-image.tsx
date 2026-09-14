@@ -79,7 +79,7 @@ export default async function OpengraphImage() {
               letterSpacing: '-0.015em',
               // Keep in sync with `.heroWord:nth-child(3)` in app/page.module.css.
               backgroundImage:
-                'linear-gradient(100deg, #c25a1c 0%, #e88b30 18%, #ffbe62 38%, #fff4e0 54%, #ffc06a 72%, #d9701f 100%)',
+                'linear-gradient(100deg, #b0b0b0 0%, #d8d8d8 18%, #f2f2f2 38%, #ffffff 54%, #e8e8e8 72%, #bdbdbd 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               color: 'transparent',
