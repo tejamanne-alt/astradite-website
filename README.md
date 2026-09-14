@@ -43,12 +43,13 @@ npm run lint
 
 Tokens live on `:root` in `app/globals.css`. The palette is deliberately
 monochrome — hierarchy is carried entirely by luminance — with exactly one
-chromatic exception, and the product accents. The home hero runs one sweep
-across the headline, clipped to the glyphs: a wormhole over "Stellar
+chromatic exception, and the product accents. The home hero's headline is
+clipped to its glyphs and gradient-filled throughout: a wormhole over "Stellar
 Intelligence." (teal `#6fc9d4` through periwinkle and rose to a `#ffe8d8` warm
-white) handing off to an accretion disk on "Applied." (ember `#c25a1c` through
-amber to a `#fff4e0` core and back). The cool ramp is one gradient over both
-words, not one per word, which is why they share a wrapper. Both are duplicated
+white) resolving into a white "Applied." (`#b0b0b0` at both edges through a
+`#ffffff` core). Only the first is chromatic; the second is a luminance sweep,
+shaped like the first so the two read as one system. The cool ramp is one
+gradient over both words, not one per word, which is why they share a wrapper. Both are duplicated
 in `app/opengraph-image.tsx`, since Satori cannot read the stylesheet; each pair
 must be changed together. Each product also paints its name in its own brand
 colour — see `accent` in `lib/products.ts`. Nothing else carries hue.

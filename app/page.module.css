@@ -88,15 +88,19 @@
   animation-delay: 240ms;
 }
 
-/* The headline runs one sweep: the wormhole's cool end across "Stellar
-   Intelligence.", then the accretion disk's hot end on "Applied." — teal
-   through rose to a warm white, handing off to ember through amber to a white
-   core. The cool ramp is one gradient over BOTH words rather than one per word,
-   which is why they share a wrapper; restarting it on each word would read as
-   two gradients instead of a continuous spectrum.
+/* The headline carries the only hue on the page: a wormhole across "Stellar
+   Intelligence." — teal through periwinkle and rose to a warm white — resolving
+   into a white "Applied." The cool ramp is one gradient over BOTH words rather
+   than one per word, which is why they share a wrapper; restarting it on each
+   word would read as two gradients instead of a continuous spectrum.
 
-   Darkest stop of either ramp: #c25a1c at ~4.8:1 on black, the palette's floor.
-   The cool ramp bottoms out at 9.5:1. */
+   "Applied." keeps a gradient rather than a flat fill, and keeps the same shape
+   the ember ramp had — dimmer at both edges, white through the middle — so it
+   still reads as lit from within rather than as plain text beside a coloured
+   phrase.
+
+   Both ramps sit far above the palette's 4.9:1 floor: the coolest stop is
+   #b3a6e4 at 9.5:1, the white one bottoms out at #b0b0b0, 9.7:1. */
 .heroPhrase {
   display: inline-block;
 }
@@ -126,8 +130,7 @@
     margin-bottom: -0.14em;
   }
 
-  /* Wormhole: teal through periwinkle and rose to a warm white that hands off
-     to the ember below. */
+  /* Wormhole: teal through periwinkle and rose to a warm white. */
   .heroPhrase {
     background-image: linear-gradient(
       100deg,
@@ -140,16 +143,17 @@
     );
   }
 
-  /* Accretion disk: ember at both edges through amber to a hot near-white. */
+  /* White, with the ember ramp's luminance shape: soft at the edges, pure
+     white through the core. */
   .heroApplied {
     background-image: linear-gradient(
       100deg,
-      #c25a1c 0%,
-      #e88b30 18%,
-      #ffbe62 38%,
-      #fff4e0 54%,
-      #ffc06a 72%,
-      #d9701f 100%
+      #b0b0b0 0%,
+      #d8d8d8 18%,
+      #f2f2f2 38%,
+      #ffffff 54%,
+      #e8e8e8 72%,
+      #bdbdbd 100%
     );
   }
 }
