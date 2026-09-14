@@ -25,15 +25,19 @@
   margin-right: auto;
 }
 
+/* Regular weight, which means Raleway 400 has to be in the loaded set in
+   layout.tsx — the display face ships 600/700/800 for the headings, and a
+   weight that isn't loaded falls back to the nearest one that is (600), not to
+   the regular this asks for. */
 .wordmark {
   font-family: var(--font-display), sans-serif;
-  font-weight: 800;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 32px;
   letter-spacing: 0;
 }
 
 .wordmark--product {
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .productName {
@@ -47,11 +51,13 @@
   gap: 22px;
 }
 
-/* The whole row needs ~580px to fit. Below that the header used to wrap into
-   three stacked rows — 161px of sticky bar on a phone. These drop the two
-   pieces a small screen can do without: the in-page anchors (every section is
-   a scroll away) and then the product name (the page's H1 says it anyway). */
-@container (max-width: 620px) {
+/* The whole row needs ~625px to fit — it was ~580px before the wordmark grew
+   to 32px, so the anchors now have to go 20px sooner than they did. Below that
+   the header used to wrap into three stacked rows — 161px of sticky bar on a
+   phone. These drop the two pieces a small screen can do without: the in-page
+   anchors (every section is a scroll away) and then the product name (the
+   page's H1 says it anyway). */
+@container (max-width: 640px) {
   .navLinks {
     display: none;
   }
@@ -60,6 +66,17 @@
 @container (max-width: 470px) {
   .productName {
     display: none;
+  }
+}
+
+/* With the anchors and the product name already gone, a product page's bar is
+   just the wordmark and its CTA — and at 30px those two stop sharing a row
+   below 375px, which is an iPhone SE. Stepping the wordmark down holds one row
+   to ~350px, about where wrapping was the fallback before. The home bar keeps
+   the full 32px: its CTA is the shorter of the two and it fits to ~330px. */
+@container (max-width: 400px) {
+  .wordmark--product {
+    font-size: 24px;
   }
 }
 

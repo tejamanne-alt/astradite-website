@@ -8,7 +8,7 @@ import './globals.css'
 
 const raleway = Raleway({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
+  weight: ['400', '600', '700', '800'],
   variable: '--font-display',
   display: 'swap',
 })
