@@ -1,6 +1,5 @@
 import Link from 'next/link'
 
-import { StarMark } from './StarMark'
 import styles from './SiteHeader.module.css'
 
 type NavLink = { label: string; href: string }
@@ -32,7 +31,6 @@ export default function SiteHeader({
     <header className={styles.header}>
       <nav className={`shell ${styles.nav}`}>
         <Link href={homeHref} className={`hit ${styles.brand}`}>
-          <StarMark size={isProduct ? 18 : 20} />
           <span
             className={`${styles.wordmark}${
               isProduct ? ` ${styles['wordmark--product']}` : ''

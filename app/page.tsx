@@ -85,7 +85,6 @@ export default function Home() {
         <section>
           <div className={`shell ${styles.heroInner}`}>
             <div>
-              <div className={`eyebrow ${styles.heroEyebrow}`}>Astradite Private Limited</div>
               <h1 className={styles.heroTitle}>
                 <span className={styles.heroPhrase}>
                   <span className={styles.heroWord}>Stellar</span>{' '}
