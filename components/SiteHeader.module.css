@@ -25,15 +25,20 @@
   margin-right: auto;
 }
 
-/* Regular weight, which means Raleway 400 has to be in the loaded set in
-   layout.tsx — the display face ships 600/700/800 for the headings, and a
-   weight that isn't loaded falls back to the nearest one that is (600), not to
-   the regular this asks for. */
+/* The logo lockup: caps on wide tracking, matching the mark. `--track` drives
+   the tracking and the negative margin together — letter-spacing adds a column
+   after the last letter as well as between them, and the margin takes that one
+   back so the gap to "/ Product" stays the 10px it looks like. The weight has
+   to be in the loaded set in layout.tsx: a weight that isn't loaded resolves to
+   the nearest one that is rather than being synthesized. */
 .wordmark {
+  --track: 0.3em;
   font-family: var(--font-display), sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 32px;
-  letter-spacing: 0;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+  margin-right: calc(-1 * var(--track));
 }
 
 .wordmark--product {
@@ -51,32 +56,61 @@
   gap: 22px;
 }
 
-/* The whole row needs ~625px to fit — it was ~580px before the wordmark grew
-   to 32px, so the anchors now have to go 20px sooner than they did. Below that
-   the header used to wrap into three stacked rows — 161px of sticky bar on a
-   phone. These drop the two pieces a small screen can do without: the in-page
-   anchors (every section is a scroll away) and then the product name (the
-   page's H1 says it anyway). */
-@container (max-width: 640px) {
+/* Caps on 0.3em of tracking measure about twice what the lowercase wordmark
+   did — 256px against 134px — so every threshold below moved out with it. The
+   first two drop the pieces a small screen can do without: the in-page anchors
+   (every section is a scroll away) and then the product name (the page's H1
+   says it anyway). */
+@container (max-width: 760px) {
   .navLinks {
     display: none;
   }
 }
 
-@container (max-width: 470px) {
+@container (max-width: 600px) {
   .productName {
     display: none;
   }
 }
 
-/* With the anchors and the product name already gone, a product page's bar is
-   just the wordmark and its CTA — and at 30px those two stop sharing a row
-   below 375px, which is an iPhone SE. Stepping the wordmark down holds one row
-   to ~350px, about where wrapping was the fallback before. The home bar keeps
-   the full 32px: its CTA is the shorter of the two and it fits to ~330px. */
-@container (max-width: 400px) {
+/* Past that the bar is a wordmark and one button, and the wordmark is the only
+   part left that can give. Each step is sized to keep the row intact down to
+   the next one, and the product pages carry their own floor because their CTA
+   is the longer of the two — "Visit dineontap.com" against "Get in touch". The
+   last step lands near the 16px the lowercase wordmark shipped at: a product
+   bar then holds one row to ~350px, about where wrapping was already the
+   fallback, and the home bar holds through 320px. */
+@container (max-width: 520px) {
+  .wordmark {
+    --track: 0.24em;
+    font-size: 26px;
+  }
+
   .wordmark--product {
     font-size: 24px;
+  }
+}
+
+@container (max-width: 430px) {
+  .wordmark {
+    --track: 0.2em;
+    font-size: 21px;
+  }
+
+  .wordmark--product {
+    font-size: 19px;
+  }
+}
+
+@container (max-width: 390px) {
+  .wordmark {
+    --track: 0.16em;
+    font-size: 18px;
+  }
+
+  .wordmark--product {
+    --track: 0.14em;
+    font-size: 15px;
   }
 }
 
