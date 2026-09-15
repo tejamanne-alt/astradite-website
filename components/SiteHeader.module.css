@@ -32,17 +32,17 @@
    to be in the loaded set in layout.tsx: a weight that isn't loaded resolves to
    the nearest one that is rather than being synthesized. */
 .wordmark {
-  --track: 0.3em;
+  --track: 0.18em;
   font-family: var(--font-display), sans-serif;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   letter-spacing: var(--track);
   text-transform: uppercase;
   margin-right: calc(-1 * var(--track));
 }
 
 .wordmark--product {
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .productName {
@@ -56,60 +56,48 @@
   gap: 22px;
 }
 
-/* Caps on 0.3em of tracking measure about twice what the lowercase wordmark
-   did — 256px against 134px — so every threshold below moved out with it. The
-   first two drop the pieces a small screen can do without: the in-page anchors
-   (every section is a scroll away) and then the product name (the page's H1
-   says it anyway). */
-@container (max-width: 760px) {
+/* A 24px wordmark on 0.18em of tracking measures 169px, two thirds of the
+   256px the 32px/0.3em one did, so these sit back in from where that pushed
+   them. The first two drop the pieces a small screen can do without: the
+   in-page anchors (every section is a scroll away) and then the product name
+   (the page's H1 says it anyway). */
+@container (max-width: 680px) {
   .navLinks {
     display: none;
   }
 }
 
-@container (max-width: 600px) {
+@container (max-width: 520px) {
   .productName {
     display: none;
   }
 }
 
 /* Past that the bar is a wordmark and one button, and the wordmark is the only
-   part left that can give. Each step is sized to keep the row intact down to
-   the next one, and the product pages carry their own floor because their CTA
-   is the longer of the two — "Visit dineontap.com" against "Get in touch". The
-   last step lands near the 16px the lowercase wordmark shipped at: a product
-   bar then holds one row to ~350px, about where wrapping was already the
-   fallback, and the home bar holds through 320px. */
-@container (max-width: 520px) {
-  .wordmark {
-    --track: 0.24em;
-    font-size: 26px;
-  }
-
-  .wordmark--product {
-    font-size: 24px;
-  }
-}
-
+   part left that can give. Tracking comes in with the size, since at 20px and
+   below the gaps are what read as loose rather than the letters as large. The
+   product pages carry their own floor throughout: their CTA is the longer of
+   the two — "Visit dineontap.com" against "Get in touch" — which leaves the
+   wordmark 56px less to work with. One row holds to ~350px on a product page
+   and through 320px on the home page, as before. */
 @container (max-width: 430px) {
   .wordmark {
-    --track: 0.2em;
-    font-size: 21px;
+    --track: 0.15em;
+    font-size: 20px;
   }
 
   .wordmark--product {
-    font-size: 19px;
+    font-size: 18px;
   }
 }
 
 @container (max-width: 390px) {
   .wordmark {
-    --track: 0.16em;
+    --track: 0.12em;
     font-size: 18px;
   }
 
   .wordmark--product {
-    --track: 0.14em;
     font-size: 15px;
   }
 }
