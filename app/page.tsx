@@ -57,7 +57,15 @@ const process = [
   },
 ]
 
-const team = ['Akshanth V', 'Chandrahas Chatta', 'Teja Manne']
+// Alphabetical by first name, as the list already read.
+const team = [
+  'Akshanth V',
+  'Anil Manne',
+  'Chandrahas Chatta',
+  'Pavan Manne',
+  'Teja Manne',
+  'Venu Sravanam',
+]
 
 export default function Home() {
   return (
