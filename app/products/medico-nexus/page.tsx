@@ -4,6 +4,7 @@ import ProductPage, { type ProductPageData } from '@/components/ProductPage'
 import MedicoNexusMockup from '@/components/mockups/MedicoNexusMockup'
 import { DocumentIcon, SearchIcon, ShieldIcon } from '@/components/icons'
 import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/products'
+import { productMetadata } from '@/lib/seo'
 
 const EARLY_ACCESS = `${CONTACT_MAILTO}?subject=Medico%20Nexus%20early%20access`
 const ENQUIRY = `${CONTACT_MAILTO}?subject=Medico%20Nexus`
@@ -11,15 +12,7 @@ const ENQUIRY = `${CONTACT_MAILTO}?subject=Medico%20Nexus`
 const DESCRIPTION =
   'Medicine is a collective discipline, practiced alone. Medico Nexus is a network where a clinician can pose a de-identified case and reach the peers who have already seen it — currently in active development.'
 
-export const metadata: Metadata = {
-  title: 'Medico Nexus',
-  description: DESCRIPTION,
-  openGraph: {
-    title: 'Medico Nexus — Astradite',
-    description: DESCRIPTION,
-    url: '/products/medico-nexus',
-  },
-}
+export const metadata: Metadata = productMetadata('medico-nexus', DESCRIPTION)
 
 const data: ProductPageData = {
   slug: 'medico-nexus',

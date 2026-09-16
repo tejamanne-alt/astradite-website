@@ -4,20 +4,14 @@ import ProductPage, { type ProductPageData } from '@/components/ProductPage'
 import DineOnTapMockup from '@/components/mockups/DineOnTapMockup'
 import { BarChartIcon, QrIcon, TicketListIcon } from '@/components/icons'
 import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/products'
+import { productMetadata } from '@/lib/seo'
 
 const SITE = 'https://dineontap.com'
 
-export const metadata: Metadata = {
-  title: 'DineOnTap',
-  description:
-    'DineOnTap turns the QR code on the table into a live menu, a kitchen ticket, and a picture of who keeps coming back.',
-  openGraph: {
-    title: 'DineOnTap — Astradite',
-    description:
-      'DineOnTap turns the QR code on the table into a live menu, a kitchen ticket, and a picture of who keeps coming back.',
-    url: '/products/dineontap',
-  },
-}
+const SEO_DESCRIPTION =
+  'DineOnTap turns the QR code on the table into a live menu, a kitchen ticket, and a picture of who keeps coming back.'
+
+export const metadata: Metadata = productMetadata('dineontap', SEO_DESCRIPTION)
 
 const data: ProductPageData = {
   slug: 'dineontap',

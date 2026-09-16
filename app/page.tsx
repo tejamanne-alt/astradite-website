@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
 
@@ -10,6 +11,10 @@ import { ArrowRight } from '@/components/icons'
 import { CONTACT_EMAIL, CONTACT_MAILTO, products } from '@/lib/products'
 
 import styles from './page.module.css'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 const capabilities = [
   {

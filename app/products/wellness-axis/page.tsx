@@ -4,21 +4,14 @@ import ProductPage, { type ProductPageData } from '@/components/ProductPage'
 import WellnessAxisMockup from '@/components/mockups/WellnessAxisMockup'
 import { HeartIcon, LineChartIcon, NodeGraphIcon } from '@/components/icons'
 import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/lib/products'
+import { productMetadata } from '@/lib/seo'
 
 const SITE = 'https://wellnessaxis.app'
 
 const DESCRIPTION =
   'You can log everything and still not know what any of it did. Wellness Axis runs your food, activity and sleep through a knowledge graph and projects a signed impact score against the conditions you actually live with.'
 
-export const metadata: Metadata = {
-  title: 'Wellness Axis',
-  description: DESCRIPTION,
-  openGraph: {
-    title: 'Wellness Axis — Astradite',
-    description: DESCRIPTION,
-    url: '/products/wellness-axis',
-  },
-}
+export const metadata: Metadata = productMetadata('wellness-axis', DESCRIPTION)
 
 const data: ProductPageData = {
   slug: 'wellness-axis',
