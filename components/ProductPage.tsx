@@ -2,7 +2,9 @@ import Link from 'next/link'
 import type { CSSProperties, ReactNode } from 'react'
 
 import { products, type ProductSlug } from '@/lib/products'
+import { productNodes } from '@/lib/seo'
 
+import JsonLd from './JsonLd'
 import Reveal from './Reveal'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
@@ -252,6 +254,9 @@ export default function ProductPage({ data }: { data: ProductPageData }) {
       </main>
 
       <SiteFooter href="/" />
+      {/* The application node names its publisher by @id; the organisation it
+          points at is emitted by the root layout, on this page too. */}
+      <JsonLd nodes={productNodes(data.slug, data.description)} />
     </>
   )
 }

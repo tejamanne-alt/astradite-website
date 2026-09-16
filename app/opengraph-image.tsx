@@ -1,29 +1,10 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Astradite — Stellar Intelligence. Applied.'
-export const size = { width: 1200, height: 630 }
-export const contentType = 'image/png'
+import { OG_CONTENT_TYPE, OG_SIZE, loadDisplayFont, ogFonts } from '@/lib/og'
 
-/**
- * Satori cannot parse woff2, and Google serves TTF when the request carries no
- * modern browser UA — which is what `fetch` sends. If anything here fails the
- * image still renders in the fallback face rather than failing the build.
- */
-async function loadDisplayFont(): Promise<ArrayBuffer | null> {
-  try {
-    const css = await fetch(
-      'https://fonts.googleapis.com/css2?family=Raleway:wght@800',
-    ).then((res) =>
-      res.ok ? res.text() : '',
-    )
-    const url = css.match(/src:\s*url\((https:[^)]+)\)/)?.[1]
-    if (!url) return null
-    const font = await fetch(url)
-    return font.ok ? await font.arrayBuffer() : null
-  } catch {
-    return null
-  }
-}
+export const alt = 'Astradite — Stellar Intelligence. Applied.'
+export const size = OG_SIZE
+export const contentType = OG_CONTENT_TYPE
 
 export default async function OpengraphImage() {
   const displayFont = await loadDisplayFont()
@@ -112,18 +93,6 @@ export default async function OpengraphImage() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: displayFont
-        ? [
-            {
-              name: 'Raleway',
-              data: displayFont,
-              weight: 800 as const,
-              style: 'normal' as const,
-            },
-          ]
-        : undefined,
-    },
+    { ...size, fonts: ogFonts(displayFont) },
   )
 }
