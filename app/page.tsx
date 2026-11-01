@@ -81,6 +81,7 @@ export default function Home() {
         links={[
           { label: 'What we do', href: '#capabilities' },
           { label: 'Products', href: '#products' },
+          { label: 'Games', href: '/games' },
           { label: 'How we work', href: '#process' },
         ]}
         cta={{ label: 'Get in touch', href: CONTACT_MAILTO }}

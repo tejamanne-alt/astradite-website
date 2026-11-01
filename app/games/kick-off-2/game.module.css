@@ -1,0 +1,379 @@
+/* ---------------------------------------------------------------------------
+   Kick Off 2
+   Shares the product pages' hero rhythm so the site keeps reading as one
+   design: same shell, same .sectionBody, same .h2 scale, same hero clamp.
+--------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* A single game's page uses the static glow the product pages use, not the
+   live starfield — that belongs to the two hub pages. */
+.glow {
+  position: absolute;
+  top: -40%;
+  left: 55%;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(232, 232, 232, 0.1),
+    rgba(232, 232, 232, 0) 62%
+  );
+  pointer-events: none;
+  animation: glowPulseSoft 14s ease-in-out infinite;
+}
+
+.heroInner {
+  position: relative;
+  padding-top: clamp(36px, 6.5vw, 100px);
+  padding-bottom: clamp(44px, 7vh, 84px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+  gap: clamp(36px, 6vw, 72px);
+  align-items: center;
+  container-type: inline-size;
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeIn 800ms ease both;
+}
+
+.heroOrdinal {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.heroTitle {
+  margin-top: 18px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(min(38px, 9vw), 6.4vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--game-accent, var(--ink));
+  text-wrap: balance;
+  animation: rise 800ms var(--ease-out) both;
+}
+
+.heroTagline {
+  margin-top: 18px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: clamp(19px, 2.4vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: var(--accent);
+  animation: rise 800ms var(--ease-out) 120ms both;
+}
+
+.heroBody {
+  margin-top: 20px;
+  max-width: 52ch;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--body);
+  text-wrap: pretty;
+  animation: rise 800ms var(--ease-out) 220ms both;
+}
+
+.heroActions {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: rise 800ms var(--ease-out) 320ms both;
+}
+
+.mockupWrap {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 1200ms ease 300ms both;
+}
+
+/* Pinned to the page margin once the grid has room for two columns, exactly as
+   the product hero's mockup is — centred, it stops short of the margin the
+   header and every section below align to. */
+@container (min-width: 952px) {
+  .mockupWrap {
+    justify-content: flex-end;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Why
+--------------------------------------------------------------------------- */
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.splitHead {
+  max-width: 18ch;
+}
+
+.prose {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.prose p {
+  color: var(--body);
+  font-size: clamp(15px, 1.4vw, 17px);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------------
+   Shared section furniture
+--------------------------------------------------------------------------- */
+
+.sectionHead {
+  max-width: 20ch;
+}
+
+.sectionLede {
+  margin-top: 16px;
+  max-width: 56ch;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------------
+   What's in it
+--------------------------------------------------------------------------- */
+
+.featureGrid {
+  margin-top: clamp(32px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: clamp(28px, 3vw, 40px);
+}
+
+.featureTitle {
+  margin-top: 14px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   How it plays
+--------------------------------------------------------------------------- */
+
+.track {
+  margin-top: clamp(32px, 5vw, 52px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 22px;
+}
+
+.rule {
+  height: 2px;
+  background: linear-gradient(90deg, #e8e8e8, rgba(232, 232, 232, 0.1));
+}
+
+.trackLabel {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.trackTitle {
+  margin-top: 8px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.trackBody {
+  margin-top: 6px;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------------
+   Where to get it
+--------------------------------------------------------------------------- */
+
+.storeGrid {
+  margin-top: clamp(32px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+}
+
+.storeCard {
+  padding: 24px;
+  background: rgba(28, 28, 28, 0.35);
+  border-radius: 16px;
+}
+
+.storeStatus {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pending);
+}
+
+.storeName {
+  margin-top: 12px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.storeLink {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.storeNote {
+  margin-top: 10px;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.inlineLink {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* The store listing's own facts. Two columns of label/value that collapse to
+   one on a narrow screen, like every other grid here. */
+.listing {
+  margin-top: clamp(28px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 20px 28px;
+}
+
+.listingRow {
+  padding-top: 14px;
+  border-top: 1px solid rgba(232, 232, 232, 0.12);
+}
+
+.listingLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.listingValue {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Support & legal
+--------------------------------------------------------------------------- */
+
+.docGrid {
+  margin-top: clamp(32px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+}
+
+/* The whole card is the link, so the target is far larger than the 44px floor
+   and `.hit` is unnecessary here. */
+.docCard {
+  display: block;
+  height: 100%;
+  padding: 24px;
+  background: rgba(28, 28, 28, 0.35);
+  border-radius: 16px;
+  color: inherit;
+  transition: background 200ms ease;
+}
+
+.docCard:hover {
+  background: rgba(28, 28, 28, 0.7);
+  color: inherit;
+}
+
+.docTitle {
+  margin-top: 14px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Closing
+--------------------------------------------------------------------------- */
+
+.closing {
+  padding-top: clamp(52px, 8vw, 96px);
+  padding-bottom: clamp(44px, 7vw, 80px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+}
+
+.closingTitle {
+  margin-top: 0;
+  max-width: 18ch;
+}
+
+.closingNote {
+  margin-top: 14px;
+  max-width: 46ch;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.closingActions {
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nextCard {
+  padding: 22px 24px;
+  background: rgba(28, 28, 28, 0.35);
+  border-radius: 16px;
+}
+
+.nextLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.nextLink {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  transition: color 200ms ease;
+}
+
+.nextLink:hover {
+  color: var(--accent);
+}
+
+.nextBlurb {
+  margin-top: 8px;
+  color: var(--body);
+}

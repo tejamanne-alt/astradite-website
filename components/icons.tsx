@@ -136,3 +136,72 @@ export function DocumentIcon(props: IconProps) {
     </Feature>
   )
 }
+
+/* --- Games ---------------------------------------------------------------- */
+
+export function BallIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.2l3.4 2.5-1.3 4h-4.2l-1.3-4z" />
+      <path d="M12 3.2v4M19.6 9.7l-3.5 2.5M16.9 19.2l-1.4-4.1M7.1 19.2l1.4-4.1M4.4 9.7l3.5 2.5" />
+    </Feature>
+  )
+}
+
+export function StopwatchIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <circle cx="12" cy="13.5" r="7.5" />
+      <path d="M12 10v3.5l2.3 1.6M9.5 2.5h5M12 2.5V6M18.4 7.6l1.6-1.6" />
+    </Feature>
+  )
+}
+
+export function OfflineIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M3 3l18 18" />
+      <path d="M8.2 13.4a5.5 5.5 0 0 1 3.2-1.5M4.6 9.8a10.5 10.5 0 0 1 4-2.4M19.4 9.8a10.5 10.5 0 0 0-7.8-2.9" />
+      <path d="M15.8 13.4a5.5 5.5 0 0 0-1.4-1" />
+      <circle cx="12" cy="17.6" r="0.9" fill="#e8e8e8" stroke="none" />
+    </Feature>
+  )
+}
+
+export function TrophyIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M7 4h10v5a5 5 0 0 1-10 0z" />
+      <path d="M7 5.5H4.5V7a3.5 3.5 0 0 0 3 3.4M17 5.5h2.5V7a3.5 3.5 0 0 1-3 3.4" />
+      <path d="M12 14v3.5M8.5 20.5h7M9.5 20.5c0-1.7 1.1-3 2.5-3s2.5 1.3 2.5 3" />
+    </Feature>
+  )
+}
+
+export function GamepadIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M7.5 7.5h9a4.5 4.5 0 0 1 4.4 3.6l.9 4.6A2.8 2.8 0 0 1 19 19a2.8 2.8 0 0 1-2.2-1.1L15.5 16h-7l-1.3 1.9A2.8 2.8 0 0 1 5 19a2.8 2.8 0 0 1-2.8-3.3l.9-4.6A4.5 4.5 0 0 1 7.5 7.5z" />
+      <path d="M7.5 10.6v2.6M6.2 11.9h2.6M15.4 11.2h.01M17.3 13.1h.01" />
+    </Feature>
+  )
+}
+
+export function ShieldCheckIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M12 2.8l7.2 2.7v6c0 4.3-2.9 8.2-7.2 9.7-4.3-1.5-7.2-5.4-7.2-9.7v-6z" />
+      <path d="M9 12l2.2 2.2L15.4 10" />
+    </Feature>
+  )
+}
+
+export function MailIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="M3.8 7l7.1 5.2a2 2 0 0 0 2.2 0L20.2 7" />
+    </Feature>
+  )
+}

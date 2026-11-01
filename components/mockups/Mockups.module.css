@@ -302,3 +302,101 @@
   color: var(--ink);
   line-height: 1.55;
 }
+
+/* --- Kick Off 2 ----------------------------------------------------------- */
+
+/* The game's own pitch green, kept in one place so the mockup and the page's
+   accent cannot drift apart. */
+.pitchPhone {
+  --pitch: #36d97b;
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-radius: 12px;
+}
+
+.scoreSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.scoreSideAway {
+  justify-content: flex-end;
+}
+
+.teamDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.teamDot[data-side='home'] {
+  background: var(--pitch);
+}
+
+.teamDot[data-side='away'] {
+  background: var(--recessive);
+}
+
+.teamName {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--body);
+}
+
+.score {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.pitch {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 14px;
+  /* A pitch, not a photograph of one: the green is a wash over the page's own
+     surface, kept far below the text contrast floor so nothing reads as a
+     foreground colour. */
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(54, 217, 123, 0.13), rgba(54, 217, 123, 0) 70%),
+    var(--bg);
+}
+
+.pitchSvg {
+  width: 100%;
+  height: auto;
+}
+
+.controlRow {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.controlChip {
+  background: rgba(232, 232, 232, 0.1);
+  color: var(--body);
+  border-radius: 9999px;
+  padding: 5px 11px;
+  font-size: 11px;
+}

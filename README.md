@@ -1,8 +1,9 @@
 # Astradite
 
 Marketing site for **Astradite Private Limited** — a software product studio in
-Kurnool, Andhra Pradesh. Four static pages: the company, and case studies for
-DineOnTap, Wellness Axis and Medico Nexus.
+Kurnool, Andhra Pradesh. The company, case studies for DineOnTap, Wellness Axis
+and Medico Nexus, and the games section: a hub, the Kick Off 2 page, and the
+three documents both app stores require of a submission.
 
 Built from the design handoff in `design-references/` (HTML prototypes, not
 production code) and rebuilt in Next.js per that brief.
@@ -26,8 +27,35 @@ no database and no auth — every action is a `mailto:` or an outbound link.
 | `/products/dineontap` | DineOnTap |
 | `/products/wellness-axis` | Wellness Axis |
 | `/products/medico-nexus` | Medico Nexus |
+| `/games` | Games — the hub |
+| `/games/kick-off-2` | Kick Off 2 — the store Marketing URL |
+| `/games/kick-off-2/privacy` | Privacy Policy — the store Privacy Policy URL |
+| `/games/kick-off-2/terms` | Terms of Use — the App Store Licence Agreement |
+| `/games/kick-off-2/support` | Support — the store Support URL |
 
 Plus generated `sitemap.xml`, `robots.txt`, `icon.svg` and `opengraph-image`.
+
+## Games and the store submissions
+
+`lib/games.ts` is the single source for everything about a game: its name,
+tagline, accent, store listings and the support address. The store `href`s are
+commented out on purpose — a badge that links to a listing which is not live
+yet is both useless and a rejection risk — so turning a listing on is one
+uncomment plus a `status` change, and the hero pill, the `/games` row, the
+store cards, the share card and the `sameAs` in the structured data all follow.
+
+The three documents under `/games/kick-off-2` are the ones Apple and Google ask
+for by URL. They share `components/LegalPage.tsx`, which takes a numbered
+section list and renders a sticky contents rail beside it. Their bodies are
+`ReactNode`, not strings, because they need inline links — and note that HTML
+entities only work in JSX text, never inside a plain JS string, where they
+render literally.
+
+`docs/kick-off-2-store-listing.md` holds the copy and the declarations to paste
+into App Store Connect and the Play Console, with the field limits checked. The
+privacy policy describes a fully offline game with a crash/performance SDK, no
+accounts, no ads and no in-app purchases; if the build changes, the policy and
+the store declarations have to change together.
 
 ## Develop
 
@@ -135,7 +163,11 @@ Carried over from the handoff, unchanged:
 - Copy beyond the supplied facts (capability descriptions, product narratives,
   the Medico Nexus roadmap) was written for the design and should be confirmed
   before launch. The Medico Nexus roadmap stages are illustrative.
-- No privacy policy, terms or cookie handling exists yet.
+- Kick Off 2 has no screenshots in either store listing yet, and the company
+  still has no site-wide privacy policy, terms or cookie handling — the three
+  documents that exist cover the game only.
+- The Kick Off 2 copy was written for this page and should be confirmed against
+  the shipped build before the listings go live.
 - `NEXT_PUBLIC_SITE_URL` sets the canonical origin for metadata, the sitemap and
   `robots.txt` (see `lib/site.ts`). Unset, it falls back to the deployment's own
   production URL on Vercel, then to `https://astradite.com`. In production that
