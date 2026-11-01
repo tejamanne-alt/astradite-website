@@ -1,0 +1,197 @@
+/* ---------------------------------------------------------------------------
+   Games hub
+   Same shell, same .sectionBody rhythm and same .h2 scale as every other page.
+--------------------------------------------------------------------------- */
+
+/* Fixed like the home page's, so the sky holds still while the page scrolls. */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow {
+  position: absolute;
+  top: -120px;
+  left: 44%;
+  width: 860px;
+  height: 860px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 232, 232, 0.09), rgba(232, 232, 232, 0) 62%);
+  pointer-events: none;
+  animation: glowPulseSoft 14s ease-in-out infinite;
+}
+
+/* Width-keyed for the same reason the other two heroes are: on `vh` a tall
+   phone reserves more headroom than a laptop, which is backwards. */
+.heroInner {
+  position: relative;
+  padding-top: clamp(40px, 8vw, 110px);
+}
+
+.heroTitle {
+  margin-top: 16px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  /* The site's one hero scale. */
+  font-size: clamp(min(38px, 9vw), 6.4vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+  animation: rise 800ms var(--ease-out) both;
+}
+
+.heroLede {
+  margin-top: 26px;
+  max-width: 62ch;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: var(--body);
+  text-wrap: pretty;
+  animation: rise 900ms var(--ease-out) 180ms both;
+}
+
+.heroActions {
+  margin-top: 34px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: rise 900ms var(--ease-out) 300ms both;
+}
+
+/* ---------------------------------------------------------------------------
+   Catalogue
+--------------------------------------------------------------------------- */
+
+.catalogueHead {
+  max-width: 22ch;
+}
+
+.gameList {
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
+.gameRow {
+  padding-block: clamp(28px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(20px, 4vw, 56px);
+}
+
+.gameMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gameOrdinal {
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.gameName {
+  margin-top: 16px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3.4vw, 40px);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+/* Mirrors `.productNameLink` on the home page: the brand colour, lifted toward
+   white on hover rather than washed out to the neutral accent. */
+.gameNameLink {
+  color: var(--game-accent, var(--ink));
+  transition: color 200ms ease;
+}
+
+.gameNameLink:hover {
+  color: var(--game-accent-hover, var(--accent));
+}
+
+.gameTagline {
+  margin-top: 12px;
+  font-size: clamp(16px, 1.5vw, 19px);
+  color: var(--ink);
+}
+
+.gameBody {
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.specs {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 16px 20px;
+}
+
+.specLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.specValue {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.gameLinks {
+  margin-top: 24px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gameLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.secondaryLink {
+  font-size: 13px;
+  color: var(--body);
+  transition: color 200ms ease;
+}
+
+.secondaryLink:hover {
+  color: var(--accent-bright);
+}
+
+/* ---------------------------------------------------------------------------
+   Closing
+--------------------------------------------------------------------------- */
+
+.closing {
+  padding-top: clamp(52px, 8vw, 96px);
+  padding-bottom: clamp(48px, 7vw, 84px);
+}
+
+.closingHead {
+  max-width: 18ch;
+}
+
+.closingBody {
+  margin-top: 18px;
+  max-width: 58ch;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.closingMail {
+  display: inline-block;
+  margin-top: 26px;
+  font-size: clamp(17px, 2.2vw, 26px);
+  border-bottom: 1px solid rgba(232, 232, 232, 0.4);
+  padding-bottom: 4px;
+  overflow-wrap: anywhere;
+}

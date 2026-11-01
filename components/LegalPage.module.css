@@ -1,0 +1,260 @@
+/* ---------------------------------------------------------------------------
+   Store-submission documents — privacy policy, terms, support.
+
+   Read by two audiences with nothing in common: a store reviewer scanning for
+   a specific clause, and a player who tapped "Privacy Policy" in a listing.
+   Both want the same thing — a numbered spine, a measure that does not run
+   past ~72 characters, and no JS between them and the text.
+--------------------------------------------------------------------------- */
+
+.head {
+  padding-top: clamp(36px, 6vw, 80px);
+  padding-bottom: clamp(24px, 3vw, 36px);
+}
+
+.title {
+  margin-top: 16px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  /* Below the hero scale: these are documents, not front doors. */
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.updated {
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+}
+
+.lede {
+  margin-top: 20px;
+  max-width: 62ch;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
+   Two-column spine
+--------------------------------------------------------------------------- */
+
+/* The container. It only declares the containment; the grid that responds to
+   it is `.bodyGrid` inside, because an element cannot match a container query
+   against its own `container-type` — only against an ancestor's. */
+.body {
+  padding-bottom: clamp(56px, 8vw, 96px);
+  container-type: inline-size;
+}
+
+.bodyGrid {
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+/* One column by default; the contents list only earns its own column once the
+   measure has room for a 220px rail beside it. Keyed to the element's own
+   width rather than the viewport, as the header's breakpoints are. */
+@container (min-width: 820px) {
+  .bodyGrid {
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .toc {
+    position: sticky;
+    /* Clears the 68px sticky header with room to breathe. */
+    top: 92px;
+  }
+}
+
+.toc {
+  padding-top: 8px;
+}
+
+.tocLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.tocList {
+  margin-top: 14px;
+  display: grid;
+  gap: 2px;
+}
+
+.tocLink {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  /* 44px of target without `.hit`: these stack, so an overlaid pseudo-element
+     would collide with its neighbours. Padding is the honest fix here. */
+  padding-block: 11px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--body);
+  transition: color 200ms ease;
+}
+
+.tocLink:hover {
+  color: var(--accent-bright);
+}
+
+.tocOrdinal {
+  font-size: 10px;
+  color: var(--dim);
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   The document itself
+--------------------------------------------------------------------------- */
+
+.article {
+  max-width: 72ch;
+}
+
+.section {
+  /* Anchored links land below the sticky header rather than under it. */
+  scroll-margin-top: 92px;
+}
+
+.section + .section {
+  margin-top: clamp(34px, 4.5vw, 52px);
+}
+
+.h2 {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.sectionOrdinal {
+  font-size: 12px;
+  color: var(--dim);
+  flex: none;
+}
+
+.p {
+  margin-top: 14px;
+  font-size: clamp(15px, 1.4vw, 16px);
+  line-height: 1.65;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.list {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+/* The global reset strips list markers, so the bullet is drawn back on — a
+   small square at the baseline rather than a disc, matching the ordinals. */
+.listItem {
+  position: relative;
+  padding-left: 20px;
+  font-size: clamp(15px, 1.4vw, 16px);
+  line-height: 1.65;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.listItem::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: var(--dim);
+}
+
+.terms {
+  margin-top: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.termRow {
+  padding-top: 14px;
+  border-top: 1px solid rgba(232, 232, 232, 0.12);
+}
+
+.term {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.termBody {
+  margin: 6px 0 0;
+  font-size: clamp(15px, 1.4vw, 16px);
+  line-height: 1.65;
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.callout {
+  margin-top: 18px;
+  padding: 18px 20px;
+  background: rgba(28, 28, 28, 0.45);
+  border-radius: 14px;
+  font-size: clamp(15px, 1.4vw, 16px);
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
+   Cross-links to the sibling documents
+--------------------------------------------------------------------------- */
+
+.related {
+  margin-top: clamp(44px, 6vw, 72px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(232, 232, 232, 0.14);
+}
+
+.relatedLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.relatedLinks {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  align-items: center;
+}
+
+.relatedLink {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.relatedMail {
+  font-size: 13px;
+  color: var(--body);
+  transition: color 200ms ease;
+}
+
+.relatedMail:hover {
+  color: var(--accent-bright);
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { gameBySlug, games, type GameSlug } from '@/lib/games'
 import { CONTACT_EMAIL, products, type ProductSlug } from '@/lib/products'
 import { siteUrl } from '@/lib/site'
 
@@ -132,3 +133,186 @@ export function productMetadata(slug: ProductSlug, description: string): Metadat
     },
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Games
+--------------------------------------------------------------------------- */
+
+/**
+ * `VideoGame` rather than the bare `SoftwareApplication` the products use:
+ * it is the narrower type schema.org defines for exactly this, and both store
+ * crawlers and search results read the extra fields off it.
+ */
+export function gameNodes(
+  slug: GameSlug,
+  description: string,
+): Record<string, unknown>[] {
+  const game = gameBySlug(slug)
+  const url = `${siteUrl}${game.href}`
+  const storeUrls = game.stores
+    .map((store) => store.href)
+    .filter((href): href is string => Boolean(href))
+
+  return [
+    {
+      '@type': 'VideoGame',
+      name: game.name,
+      url,
+      description,
+      applicationCategory: 'GameApplication',
+      genre: game.genre,
+      operatingSystem: 'iOS, Android',
+      gamePlatform: ['iOS', 'Android'],
+      playMode: 'SinglePlayer',
+      publisher: { '@id': ORGANIZATION_ID },
+      author: { '@id': ORGANIZATION_ID },
+      ...(storeUrls.length > 0 ? { sameAs: storeUrls } : {}),
+    },
+    gamesBreadcrumb(game.name, url),
+  ]
+}
+
+function gamesBreadcrumb(name: string, url: string): Record<string, unknown> {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: NAME, item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Games', item: `${siteUrl}/games` },
+      { '@type': 'ListItem', position: 3, name, item: url },
+    ],
+  }
+}
+
+/** Same wholesale-replacement caveat as `productMetadata`. */
+export function gameMetadata(slug: GameSlug, description: string): Metadata {
+  const game = gameBySlug(slug)
+  const socialTitle = `${game.name} — ${NAME}`
+
+  return {
+    title: game.name,
+    description,
+    alternates: { canonical: game.href },
+    openGraph: {
+      type: 'website',
+      siteName: NAME,
+      locale: 'en_IN',
+      url: game.href,
+      title: socialTitle,
+      description,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: socialTitle,
+      description,
+    },
+  }
+}
+
+/**
+ * A policy or support document.
+ *
+ * These exist to be read by a store reviewer and by the person who tapped
+ * "Privacy Policy" in a listing, not to be found in search — but they must
+ * stay indexable, because Apple and Google both fetch the URL anonymously and
+ * a `noindex` page that needs JS or a login is a rejection. So: indexable,
+ * canonical, and no social card beyond the title.
+ */
+export function legalMetadata(options: {
+  title: string
+  description: string
+  path: string
+  /** The thing the document governs, e.g. "Kick Off 2". */
+  subject: string
+}): Metadata {
+  const socialTitle = `${options.title} — ${options.subject}`
+
+  return {
+    title: `${options.title} — ${options.subject}`,
+    description: options.description,
+    alternates: { canonical: options.path },
+    openGraph: {
+      type: 'article',
+      siteName: NAME,
+      locale: 'en_IN',
+      url: options.path,
+      title: socialTitle,
+      description: options.description,
+    },
+    twitter: {
+      card: 'summary',
+      title: socialTitle,
+      description: options.description,
+    },
+  }
+}
+
+export function legalNodes(options: {
+  title: string
+  description: string
+  path: string
+  subject: string
+  subjectPath: string
+}): Record<string, unknown>[] {
+  const url = `${siteUrl}${options.path}`
+
+  return [
+    {
+      '@type': 'WebPage',
+      name: `${options.title} — ${options.subject}`,
+      url,
+      description: options.description,
+      inLanguage: 'en-IN',
+      isPartOf: { '@id': WEBSITE_ID },
+      publisher: { '@id': ORGANIZATION_ID },
+      about: { '@type': 'VideoGame', name: options.subject, url: `${siteUrl}${options.subjectPath}` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: NAME, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Games', item: `${siteUrl}/games` },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: options.subject,
+          item: `${siteUrl}${options.subjectPath}`,
+        },
+        { '@type': 'ListItem', position: 4, name: options.title, item: url },
+      ],
+    },
+  ]
+}
+
+/** The `/games` hub itself: a list of the games, in the order the page shows. */
+export function gamesIndexNodes(): Record<string, unknown>[] {
+  return [
+    {
+      '@type': 'CollectionPage',
+      name: `Games — ${NAME}`,
+      url: `${siteUrl}/games`,
+      description: GAMES_DESCRIPTION,
+      inLanguage: 'en-IN',
+      isPartOf: { '@id': WEBSITE_ID },
+      publisher: { '@id': ORGANIZATION_ID },
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: games.map((game, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: game.name,
+          item: `${siteUrl}${game.href}`,
+        })),
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: NAME, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Games', item: `${siteUrl}/games` },
+      ],
+    },
+  ]
+}
+
+export const GAMES_DESCRIPTION =
+  'Games built by Astradite — arcade-first, phone-first, and small enough to open in a spare minute. Starting with Kick Off 2.'
