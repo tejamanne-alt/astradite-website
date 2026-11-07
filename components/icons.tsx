@@ -205,3 +205,42 @@ export function MailIcon(props: IconProps) {
     </Feature>
   )
 }
+
+/* --- Slime Rush ----------------------------------------------------------- */
+
+export function SlimeIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M4.5 17.5C4.5 9.5 7.6 5 12 5s7.5 4.5 7.5 12.5a1.5 1.5 0 0 1-1.5 1.5H6a1.5 1.5 0 0 1-1.5-1.5z" />
+      <path d="M9.6 12.6h.01M14.4 12.6h.01" />
+    </Feature>
+  )
+}
+
+export function JumpIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M3 19c3.5 0 5.5-11 9-11s6 5.5 9 5.5" />
+      <path d="M18.4 9.6l2.8 3.7-4.4 1.2" />
+    </Feature>
+  )
+}
+
+export function GapIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M2.5 15.5h6.5M15 15.5h6.5" />
+      <path d="M9 15.5v4M15 15.5v4" />
+      <path d="M12 4.5v6M9.6 8.4L12 10.9l2.4-2.5" />
+    </Feature>
+  )
+}
+
+export function SpeedIcon(props: IconProps) {
+  return (
+    <Feature {...props}>
+      <path d="M3 8.5h8M2 12.5h5.5M4 16.5h6" />
+      <path d="M13.5 5.5l7 6.5-7 6.5" />
+    </Feature>
+  )
+}

@@ -2,8 +2,8 @@
 
 Marketing site for **Astradite Private Limited** — a software product studio in
 Kurnool, Andhra Pradesh. The company, case studies for DineOnTap, Wellness Axis
-and Medico Nexus, and the games section: a hub, the Kick Off 2 page, and the
-three documents both app stores require of a submission.
+and Medico Nexus, and the games section: a hub, a page per game, and the three
+documents both app stores require of each submission.
 
 Built from the design handoff in `design-references/` (HTML prototypes, not
 production code) and rebuilt in Next.js per that brief.
@@ -32,30 +32,48 @@ no database and no auth — every action is a `mailto:` or an outbound link.
 | `/games/kick-off-2/privacy` | Privacy Policy — the store Privacy Policy URL |
 | `/games/kick-off-2/terms` | Terms of Use — the App Store Licence Agreement |
 | `/games/kick-off-2/support` | Support — the store Support URL |
+| `/games/slime-rush` | Slime Rush — the store Marketing URL |
+| `/games/slime-rush/privacy` | Privacy Policy — the store Privacy Policy URL |
+| `/games/slime-rush/terms` | Terms of Use — the App Store Licence Agreement |
+| `/games/slime-rush/support` | Support — the store Support URL |
 
 Plus generated `sitemap.xml`, `robots.txt`, `icon.svg` and `opengraph-image`.
 
 ## Games and the store submissions
 
 `lib/games.ts` is the single source for everything about a game: its name,
-tagline, accent, store listings and the support address. The store `href`s are
-commented out on purpose — a badge that links to a listing which is not live
-yet is both useless and a rejection risk — so turning a listing on is one
-uncomment plus a `status` change, and the hero pill, the `/games` row, the
-store cards, the share card and the `sameAs` in the structured data all follow.
+tagline, accent, store listings, the facts its listing declares and the support
+address. The store `href`s are commented out on purpose — a badge that links to
+a listing which is not live yet is both useless and a rejection risk — so
+turning a listing on is one uncomment plus a `status` change, and the hero pill,
+the `/games` row, the store cards, the share card and the `sameAs` in the
+structured data all follow.
 
-The three documents under `/games/kick-off-2` are the ones Apple and Google ask
-for by URL. They share `components/LegalPage.tsx`, which takes a numbered
-section list and renders a sticky contents rail beside it. Their bodies are
-`ReactNode`, not strings, because they need inline links — and note that HTML
-entities only work in JSX text, never inside a plain JS string, where they
+A game page is data, not markup: `components/GamePage.tsx` renders the hero,
+the four feature cards, the step track, the store cards, the facts table and
+the document cards, and each game supplies only its prose. The three document
+routes are derived from the game's own `href` rather than listed per game,
+because a game that forgot one would be a game whose store listing points at a
+dead URL. The sitemap works the same way — it iterates `games` ×
+`GAME_DOCUMENTS`, so a new game needs no sitemap edit.
+
+The documents themselves share `components/LegalPage.tsx`, which takes a
+numbered section list and renders a sticky contents rail beside it. Their bodies
+are `ReactNode`, not strings, because they need inline links — and note that
+HTML entities only work in JSX text, never inside a plain JS string, where they
 render literally.
 
-`docs/kick-off-2-store-listing.md` holds the copy and the declarations to paste
-into App Store Connect and the Play Console, with the field limits checked. The
-privacy policy describes a fully offline game with a crash/performance SDK, no
-accounts, no ads and no in-app purchases; if the build changes, the policy and
-the store declarations have to change together.
+Each game has a `docs/<slug>-store-listing.md` holding the copy and the
+declarations to paste into App Store Connect and the Play Console, with the
+field limits checked. **The two games declare different things, and the files
+are not interchangeable:** Kick Off 2 is fully offline with a crash/performance
+SDK and no ads; Slime Rush carries a third-party ad SDK, which adds advertising
+identifiers, App Tracking Transparency, an EEA/UK consent flow, a "shared"
+column on Play's Data Safety form and a "contains ads" listing label. Slime
+Rush's file also lists the build work its published policy assumes — naming the
+ad networks, a consent-reset control, the ATT prompt, the `AD_ID` permission and
+an age-capped ad content rating. If a build changes, the policy and that store's
+declarations change together.
 
 ## Develop
 
@@ -163,11 +181,14 @@ Carried over from the handoff, unchanged:
 - Copy beyond the supplied facts (capability descriptions, product narratives,
   the Medico Nexus roadmap) was written for the design and should be confirmed
   before launch. The Medico Nexus roadmap stages are illustrative.
-- Kick Off 2 has no screenshots in either store listing yet, and the company
-  still has no site-wide privacy policy, terms or cookie handling — the three
-  documents that exist cover the game only.
-- The Kick Off 2 copy was written for this page and should be confirmed against
-  the shipped build before the listings go live.
+- Neither game has screenshots in either store listing yet, and the company
+  still has no site-wide privacy policy, terms or cookie handling — the
+  documents that exist cover the two games only.
+- Both games' copy was written for these pages and should be confirmed against
+  the shipped builds before the listings go live.
+- Slime Rush's privacy policy names no ad network and promises a consent-reset
+  control in the game's settings. Both have to be made true before submission;
+  `docs/slime-rush-store-listing.md` lists them.
 - `NEXT_PUBLIC_SITE_URL` sets the canonical origin for metadata, the sitemap and
   `robots.txt` (see `lib/site.ts`). Unset, it falls back to the deployment's own
   production URL on Vercel, then to `https://astradite.com`. In production that

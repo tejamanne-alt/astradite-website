@@ -400,3 +400,53 @@
   padding: 5px 11px;
   font-size: 11px;
 }
+
+/* --- Slime Rush ----------------------------------------------------------- */
+
+/* The game's own violet, kept in one place so the mockup and the page's accent
+   cannot drift apart. */
+.runPhone {
+  --slime: #c084fc;
+}
+
+.runStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 12px;
+}
+
+.runStat {
+  min-width: 0;
+}
+
+.runStatLabel {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.runStatValue {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.lane {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 14px;
+  /* A lane, not a photograph of one: the violet is a wash over the page's own
+     surface, kept far below the text contrast floor so nothing in it reads as
+     a foreground colour. */
+  background:
+    radial-gradient(120% 90% at 50% 100%, rgba(192, 132, 252, 0.14), rgba(192, 132, 252, 0) 70%),
+    var(--bg);
+}
+
+.laneSvg {
+  width: 100%;
+  height: auto;
+}
