@@ -62,7 +62,7 @@ export default function GamesIndex() {
             <p className={styles.heroLede}>
               The same engineering that goes into the products, pointed at something you play
               for ninety seconds at a bus stop. Arcade-first, phone-first, and finished — no
-              energy timers, no second screen, nothing between you and the thing you came for.
+              energy timers, no second screen, no account to make before you can play.
             </p>
             <div className={styles.heroActions}>
               <Link href="#catalogue" className="btn btn--primary">
@@ -81,7 +81,9 @@ export default function GamesIndex() {
             <Reveal>
               <div className="eyebrow">The catalogue</div>
               <h2 className={`h2 ${styles.catalogueHead}`}>
-                {games.length === 1 ? 'One game, out the door first.' : 'What we ship.'}
+                {games.length === 1
+                  ? 'One game, out the door first.'
+                  : 'Everything we have in flight.'}
               </h2>
             </Reveal>
 

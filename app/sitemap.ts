@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-import { games } from '@/lib/games'
+import { GAME_DOCUMENTS, games } from '@/lib/games'
 import { products } from '@/lib/products'
 import { siteUrl } from '@/lib/site'
 
@@ -10,7 +10,6 @@ import { siteUrl } from '@/lib/site'
  * review, and a URL that appears in the sitemap is one less thing for a
  * reviewer to wonder about.
  */
-const GAME_DOCUMENTS = ['privacy', 'terms', 'support'] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
