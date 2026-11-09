@@ -39,6 +39,12 @@ no database and no auth — every action is a `mailto:` or an outbound link.
 
 Plus generated `sitemap.xml`, `robots.txt`, `icon.svg` and `opengraph-image`.
 
+`public/` is served from the site root. It holds one file:
+`google16cc37010b8f0862.html`, the Google Search Console verification token for
+`https://www.astradite.com/`. **Do not delete or edit it** — Search Console
+re-checks it periodically and the property loses verification if it stops
+returning its exact 53 bytes.
+
 ## Games and the store submissions
 
 `lib/games.ts` is the single source for everything about a game: its name,
